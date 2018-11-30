@@ -1,20 +1,18 @@
 'use strict';
 
-var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
-var _createClass2 = require('babel-runtime/helpers/createClass');
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var Ajv = require('ajv');
 
-var Value = function () {
+var Value =
+/*#__PURE__*/
+function () {
   function Value(schema) {
-    (0, _classCallCheck3.default)(this, Value);
+    (0, _classCallCheck2.default)(this, Value);
 
     if (!schema) {
       throw new Error('Schema is missing.');
@@ -23,9 +21,11 @@ var Value = function () {
     this.schema = schema;
   }
 
-  (0, _createClass3.default)(Value, [{
-    key: 'validate',
+  (0, _createClass2.default)(Value, [{
+    key: "validate",
     value: function validate(value) {
+      var valueName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Value';
+
       if (value === undefined) {
         throw new Error('Value is missing.');
       }
@@ -37,15 +37,15 @@ var Value = function () {
         return;
       }
 
-      var message = ajv.errorsText(ajv.errors, { dataVar: 'Value' }) + '.';
+      var message = "".concat(ajv.errorsText([ajv.errors[0]], {
+        dataVar: valueName
+      }), ".");
       var error = new Error(message);
-
       error.origins = ajv.errors;
-
       throw error;
     }
   }, {
-    key: 'isValid',
+    key: "isValid",
     value: function isValid(value) {
       if (value === undefined) {
         throw new Error('Value is missing.');
