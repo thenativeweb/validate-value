@@ -53,6 +53,24 @@ suite('Value', () => {
         Array.isArray(ex.origins));
     });
 
+    test('throws an error with the given value name if one is provided.', async () => {
+      assert.that(() => {
+        schema.validate({
+          username: 'Jane Doe'
+        }, 'Person');
+      }).is.throwing(ex =>
+        ex.message === `Person should have required property 'password'.` &&
+        Array.isArray(ex.origins));
+    });
+
+    test('throws only the first error when there are more than one.', async () => {
+      assert.that(() => {
+        schema.validate({});
+      }).is.throwing(ex =>
+        ex.message === `Value should have required property 'username'.` &&
+        Array.isArray(ex.origins));
+    });
+
     test('does not throw an error if schema matches.', async () => {
       assert.that(() => {
         schema.validate({

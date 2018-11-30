@@ -11,7 +11,7 @@ class Value {
     this.schema = schema;
   }
 
-  validate (value) {
+  validate (value, valueName = 'Value') {
     if (value === undefined) {
       throw new Error('Value is missing.');
     }
@@ -23,7 +23,7 @@ class Value {
       return;
     }
 
-    const message = `${ajv.errorsText(ajv.errors, { dataVar: 'Value' })}.`;
+    const message = `${ajv.errorsText([ ajv.errors[0] ], { dataVar: valueName })}.`;
     const error = new Error(message);
 
     error.origins = ajv.errors;

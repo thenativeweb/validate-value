@@ -45,6 +45,21 @@ try {
 }
 ```
 
+By default, the error message uses `Value` as identifier for the object that is validated, but sometimes you may want to change this. Therefor, provide the desired identifier as second parameter to the `validate` function:
+
+```javascript
+const user = {
+  username: 'Jane Doe',
+  password: 'secret'
+};
+
+try {
+  value.validate(user, 'Person');
+} catch (ex) {
+  // ...
+}
+```
+
 From time to time, you may not be interested in the actual error, but only in the fact whether the given object is valid or not. For these cases, use the `isValid` function:
 
 ```javascript
