@@ -45,7 +45,7 @@ try {
 }
 ```
 
-By default, the error message uses `value` as identifier for the object that is validated, but sometimes you may want to change this. Therefor, provide the desired identifier as second parameter to the `validate` function:
+By default, the error message uses `value` as identifier and `.` as the separator for the object that is validated, but sometimes you may want to change this. Therefor, provide the desired identifier and separator as second parameter to the `validate` function:
 
 ```javascript
 const user = {
@@ -54,7 +54,7 @@ const user = {
 };
 
 try {
-  value.validate(user, 'person');
+  value.validate(user, { valueName: 'person', separator: '/' });
 } catch (ex) {
   // ...
 }

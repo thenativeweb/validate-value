@@ -12,7 +12,7 @@ class Value {
     this.schema = schema;
   }
 
-  validate (value, valueName = 'value') {
+  validate (value, { valueName = 'value', separator = '.' } = {}) {
     if (value === undefined) {
       throw new Error('Value is missing.');
     }
@@ -31,7 +31,9 @@ class Value {
     const errors = getErrors(schema, value, result);
     const { message, path } = errors[0];
 
-    const error = new Error(`${message} (at ${valueName}${path.substring(1)}).`);
+    const updatedPath = `${valueName}${path.substring(1).replace(/\./, separator)}`;
+
+    const error = new Error(`${message} (at ${updatedPath}).`);
 
     error.origins = errors;
 

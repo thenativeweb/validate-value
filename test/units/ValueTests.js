@@ -57,9 +57,9 @@ suite('Value', () => {
       assert.that(() => {
         schema.validate({
           username: 'Jane Doe'
-        }, 'root');
+        }, { valueName: 'root', separator: '/' });
       }).is.throwing(ex =>
-        ex.message === 'Missing required property: password (at root.password).' &&
+        ex.message === 'Missing required property: password (at root/password).' &&
         Array.isArray(ex.origins));
     });
 
