@@ -31,7 +31,7 @@ class Value {
     const errors = getErrors(schema, value, result);
     const { message, path } = errors[0];
 
-    const updatedPath = `${valueName}${path.substring(1).replace(/\./, separator)}`;
+    const updatedPath = `${valueName}${path.substring(1).replace(/\./g, separator)}`;
 
     const error = new Error(`${message} (at ${updatedPath}).`);
 
