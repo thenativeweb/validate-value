@@ -57,6 +57,26 @@ suite('Value', () => {
       assert.that(() => {
         schema.validate({
           username: 'Jane Doe'
+        }, { valueName: 'root' });
+      }).is.throwing(ex =>
+        ex.message === 'Missing required property: password (at root.password).' &&
+        Array.isArray(ex.origins));
+    });
+
+    test('throws an error with the given separator if schema does not match.', async () => {
+      assert.that(() => {
+        schema.validate({
+          username: 'Jane Doe'
+        }, { separator: '/' });
+      }).is.throwing(ex =>
+        ex.message === 'Missing required property: password (at value/password).' &&
+        Array.isArray(ex.origins));
+    });
+
+    test('throws an error with the given value name and separator if schema does not match.', async () => {
+      assert.that(() => {
+        schema.validate({
+          username: 'Jane Doe'
         }, { valueName: 'root', separator: '/' });
       }).is.throwing(ex =>
         ex.message === 'Missing required property: password (at root/password).' &&
