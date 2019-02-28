@@ -48,7 +48,7 @@ function () {
       var _errors$ = errors[0],
           message = _errors$.message,
           path = _errors$.path;
-      var updatedPath = "".concat(valueName).concat(path.substring(1).replace(/\./, separator));
+      var updatedPath = "".concat(valueName).concat(path.substring(1).replace(/\./g, separator));
       var error = new Error("".concat(message, " (at ").concat(updatedPath, ")."));
       error.origins = errors;
       throw error;
