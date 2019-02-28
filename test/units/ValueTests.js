@@ -49,7 +49,17 @@ suite('Value', () => {
           username: 'Jane Doe'
         });
       }).is.throwing(ex =>
-        ex.message === 'Missing required property: password' &&
+        ex.message === 'Missing required property: password (at value.password).' &&
+        Array.isArray(ex.origins));
+    });
+
+    test('throws an error with the given value name if schema does not match.', async () => {
+      assert.that(() => {
+        schema.validate({
+          username: 'Jane Doe'
+        }, 'root');
+      }).is.throwing(ex =>
+        ex.message === 'Missing required property: password (at root.password).' &&
         Array.isArray(ex.origins));
     });
 
@@ -57,7 +67,7 @@ suite('Value', () => {
       assert.that(() => {
         schema.validate({});
       }).is.throwing(ex =>
-        ex.message === `Missing required property: username` &&
+        ex.message === `Missing required property: username (at value.username).` &&
         Array.isArray(ex.origins));
     });
 
