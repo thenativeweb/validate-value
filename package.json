@@ -14,12 +14,13 @@
   ],
   "main": "dist/Value.js",
   "dependencies": {
-    "ajv": "6.6.1"
+    "jjv": "1.0.2",
+    "jjve": "0.5.2"
   },
   "devDependencies": {
-    "assertthat": "2.0.0",
+    "assertthat": "2.0.3",
     "require-dir": "1.2.0",
-    "roboter": "3.0.3"
+    "roboter": "4.0.0"
   },
   "repository": {
     "type": "git",

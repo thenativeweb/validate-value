@@ -1,6 +1,7 @@
 'use strict';
 
-const Ajv = require('ajv');
+const jjv = require('jjv'),
+      jjve = require('jjve');
 
 class Value {
   constructor (schema) {
@@ -11,22 +12,28 @@ class Value {
     this.schema = schema;
   }
 
-  validate (value, valueName = 'Value') {
+  validate (value) {
     if (value === undefined) {
       throw new Error('Value is missing.');
     }
 
-    const ajv = new Ajv();
-    const isValid = ajv.validate(this.schema, value);
+    const { schema } = this;
 
-    if (isValid) {
+    const validator = jjv();
+    const getErrors = jjve(validator);
+
+    const result = validator.validate(schema, value);
+
+    if (!result) {
       return;
     }
 
-    const message = `${ajv.errorsText([ ajv.errors[0] ], { dataVar: valueName })}.`;
+    const errors = getErrors(schema, value, result);
+    const { message } = errors[0];
+
     const error = new Error(message);
 
-    error.origins = ajv.errors;
+    error.origins = errors;
 
     throw error;
   }
