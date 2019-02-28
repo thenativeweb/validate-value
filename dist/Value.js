@@ -25,7 +25,11 @@ function () {
   (0, _createClass2.default)(Value, [{
     key: "validate",
     value: function validate(value) {
-      var valueName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'value';
+      var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+          _ref$valueName = _ref.valueName,
+          valueName = _ref$valueName === void 0 ? 'value' : _ref$valueName,
+          _ref$separator = _ref.separator,
+          separator = _ref$separator === void 0 ? '.' : _ref$separator;
 
       if (value === undefined) {
         throw new Error('Value is missing.');
@@ -44,7 +48,8 @@ function () {
       var _errors$ = errors[0],
           message = _errors$.message,
           path = _errors$.path;
-      var error = new Error("".concat(message, " (at ").concat(valueName).concat(path.substring(1), ")."));
+      var updatedPath = "".concat(valueName).concat(path.substring(1).replace(/\./, separator));
+      var error = new Error("".concat(message, " (at ").concat(updatedPath, ")."));
       error.origins = errors;
       throw error;
     }
