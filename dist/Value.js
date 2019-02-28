@@ -6,7 +6,8 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var Ajv = require('ajv');
+var jjv = require('jjv'),
+    jjve = require('jjve');
 
 var Value =
 /*#__PURE__*/
@@ -24,24 +25,23 @@ function () {
   (0, _createClass2.default)(Value, [{
     key: "validate",
     value: function validate(value) {
-      var valueName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Value';
-
       if (value === undefined) {
         throw new Error('Value is missing.');
       }
 
-      var ajv = new Ajv();
-      var isValid = ajv.validate(this.schema, value);
+      var schema = this.schema;
+      var validator = jjv();
+      var getErrors = jjve(validator);
+      var result = validator.validate(schema, value);
 
-      if (isValid) {
+      if (!result) {
         return;
       }
 
-      var message = "".concat(ajv.errorsText([ajv.errors[0]], {
-        dataVar: valueName
-      }), ".");
+      var errors = getErrors(schema, value, result);
+      var message = errors[0].message;
       var error = new Error(message);
-      error.origins = ajv.errors;
+      error.origins = errors;
       throw error;
     }
   }, {
