@@ -3,7 +3,7 @@
 const assert = require('assertthat');
 
 const schemas = require('../shared/schemas'),
-      Value = require('../../src/Value');
+      Value = require('../../lib/Value');
 
 suite('Value', () => {
   test('is a function.', async () => {
