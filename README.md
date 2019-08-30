@@ -13,7 +13,13 @@ $ npm install validate-value
 First you need to integrate validate-value into your application:
 
 ```javascript
-const Value = require('validate-value');
+const Value = require('validate-value').default;
+```
+
+If you use TypeScript, use the following code instead:
+
+```typescript
+import Value from 'validate-value';
 ```
 
 Then, create a new instance and provide a [JSON schema](https://json-schema.org/learn/getting-started-step-by-step.html) that you would like to use for validation:

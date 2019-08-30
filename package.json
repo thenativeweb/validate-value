@@ -10,17 +10,24 @@
     {
       "name": "Jan-Hendrik Grundhöfer",
       "email": "jan-hendrik.grundhoefer@thenativeweb.io"
+    },
+    {
+      "name": "Hannes Leutloff",
+      "email": "hannes.leutloff@thenativeweb.io"
     }
   ],
-  "main": "lib/Value.js",
+  "main": "build/lib/Value.js",
+  "types": "build/lib/Value.d.ts",
   "dependencies": {
     "jjv": "1.0.2",
-    "jjve": "0.5.2"
+    "jjve": "0.5.2",
+    "json-schema": "0.2.3"
   },
   "devDependencies": {
-    "assertthat": "2.0.3",
-    "require-dir": "1.2.0",
-    "roboter": "4.0.3"
+    "@types/jjv": "1.0.29",
+    "@types/jjve": "0.4.29",
+    "assertthat": "4.0.1",
+    "roboter": "7.1.1"
   },
   "repository": {
     "type": "git",
