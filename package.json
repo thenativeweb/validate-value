@@ -21,13 +21,13 @@
   "dependencies": {
     "jjv": "1.0.2",
     "jjve": "0.5.2",
-    "json-schema": "0.2.3"
+    "json-schema": "0.2.5"
   },
   "devDependencies": {
     "@types/jjv": "1.0.29",
     "@types/jjve": "0.4.29",
     "assertthat": "4.0.2",
-    "roboter": "7.1.5"
+    "roboter": "7.2.0"
   },
   "repository": {
     "type": "git",
