@@ -18,6 +18,8 @@ suite('Value', (): void => {
     test('does not throw an error if value is a falsy value.', async (): Promise<void> => {
       schema = new Value(schemas.boolean);
 
+      schema.validate(false);
+
       assert.that((): void => {
         schema.validate(false);
       }).is.not.throwing();

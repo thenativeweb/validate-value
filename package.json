@@ -20,14 +20,13 @@
   "types": "build/lib/Value.d.ts",
   "dependencies": {
     "jjv": "1.0.2",
-    "jjve": "0.5.2",
-    "json-schema": "0.2.5"
+    "jjve": "0.5.2"
   },
   "devDependencies": {
     "@types/jjv": "1.0.29",
     "@types/jjve": "0.4.29",
     "assertthat": "4.0.2",
-    "roboter": "7.4.0"
+    "roboter": "7.4.1"
   },
   "repository": {
     "type": "git",

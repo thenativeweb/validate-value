@@ -17,12 +17,12 @@ class Value {
     const getErrors = jjve(validator);
 
     const result = validator.validate(this.schema, value);
+    const errors = getErrors(this.schema, value, result);
 
-    if (!result) {
+    if (errors.length === 0) {
       return;
     }
 
-    const errors = getErrors(this.schema, value, result);
     const { message, path } = errors[0];
 
     const updatedPath = `${valueName}${path.substring(1).replace(/\./ug, separator)}`;
