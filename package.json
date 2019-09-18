@@ -27,7 +27,7 @@
     "@types/jjv": "1.0.29",
     "@types/jjve": "0.4.29",
     "assertthat": "4.0.2",
-    "roboter": "7.4.0"
+    "roboter": "7.4.1"
   },
   "repository": {
     "type": "git",
