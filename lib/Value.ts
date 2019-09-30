@@ -25,7 +25,7 @@ class Value {
 
     const { message, path } = errors[0];
 
-    const updatedPath = `${valueName}${path.substring(1).replace(/\./ug, separator)}`;
+    const updatedPath = `${valueName}${path.slice(1).replace(/\./ug, separator)}`;
 
     const error = new ValidationError(`${message} (at ${updatedPath}).`, errors);
 
