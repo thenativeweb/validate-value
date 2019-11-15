@@ -1,6 +1,6 @@
 import jjv from 'jjv';
 import jjve from 'jjve';
-import ValidationError from './ValidationError';
+import { ValidationError } from './ValidationError';
 
 class Value {
   public schema: object;
@@ -43,4 +43,4 @@ class Value {
   }
 }
 
-export default Value;
+export { Value };

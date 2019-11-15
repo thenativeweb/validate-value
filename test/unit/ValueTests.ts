@@ -1,7 +1,7 @@
-import assert from 'assertthat';
-import schemas from '../shared/schemas';
-import ValidationError from '../../lib/ValidationError';
-import Value from '../../lib/Value';
+import { assert } from 'assertthat';
+import { ValidationError } from '../../lib/ValidationError';
+import { Value } from '../../lib/Value';
+import { boolean, user } from '../shared/schemas';
 
 suite('Value', (): void => {
   test('is a function.', async (): Promise<void> => {
@@ -12,11 +12,11 @@ suite('Value', (): void => {
     let schema: Value;
 
     setup((): void => {
-      schema = new Value(schemas.user);
+      schema = new Value(user);
     });
 
     test('does not throw an error if value is a falsy value.', async (): Promise<void> => {
-      schema = new Value(schemas.boolean);
+      schema = new Value(boolean);
 
       schema.validate(false);
 
@@ -87,11 +87,11 @@ suite('Value', (): void => {
     let schema: Value;
 
     setup((): void => {
-      schema = new Value(schemas.user);
+      schema = new Value(user);
     });
 
     test('does not throw an error if value is a falsy value.', async (): Promise<void> => {
-      schema = new Value(schemas.boolean);
+      schema = new Value(boolean);
 
       assert.that((): void => {
         schema.isValid(false);
