@@ -11,7 +11,7 @@ suite('Value', (): void => {
   suite('validate', (): void => {
     let schema: Value;
 
-    setup((): void => {
+    setup(async (): Promise<void> => {
       schema = new Value(user);
     });
 
@@ -86,7 +86,7 @@ suite('Value', (): void => {
   suite('isValid', (): void => {
     let schema: Value;
 
-    setup((): void => {
+    setup(async (): Promise<void> => {
       schema = new Value(user);
     });
 
