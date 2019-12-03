@@ -4,13 +4,13 @@ validate-value validates values against JSON schemas.
 
 ## Status
 
-| Category         | Status                                                                                                                                                   |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Version          | [![npm](https://img.shields.io/npm/v/validate-value)](https://www.npmjs.com/package/validate-value)                                                      |
-| Dependencies     | ![David](https://img.shields.io/david/thenativeweb/validate-value)                                                                                       |
-| Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/validate-value)                                                                                   |
-| Build            | [![CircleCI](https://img.shields.io/circleci/build/github/thenativeweb/validate-value)](https://circleci.com/gh/thenativeweb/validate-value/tree/master) |
-| License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/validate-value)                                                                             |
+| Category         | Status                                                                                                      |
+| ---------------- | ----------------------------------------------------------------------------------------------------------- |
+| Version          | [![npm](https://img.shields.io/npm/v/validate-value)](https://www.npmjs.com/package/validate-value)         |
+| Dependencies     | ![David](https://img.shields.io/david/thenativeweb/validate-value)                                          |
+| Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/validate-value)                                      |
+| Build            | ![GitHub Actions](https://github.com/thenativeweb/validate-value/workflows/Release/badge.svg?branch=master) |
+| License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/validate-value)                                |
 
 ## Installation
 
