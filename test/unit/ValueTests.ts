@@ -1,7 +1,7 @@
 import { assert } from 'assertthat';
-import { ValidationError } from '../../lib/ValidationError';
+import { boolean } from '../shared/schemas/boolean';
+import { user } from '../shared/schemas/user';
 import { Value } from '../../lib/Value';
-import { boolean, user } from '../shared/schemas';
 
 suite('Value', (): void => {
   test('is a function.', async (): Promise<void> => {
@@ -30,9 +30,7 @@ suite('Value', (): void => {
         schema.validate({
           username: 'Jane Doe'
         });
-      }).is.throwing((ex: Error): boolean =>
-        ex.message === 'Missing required property: password (at value.password).' &&
-        Array.isArray((ex as ValidationError).origins));
+      }).is.throwing((ex: Error): boolean => ex.message === 'Missing required property: password (at value.password).');
     });
 
     test('throws an error with the given value name if schema does not match.', async (): Promise<void> => {
@@ -40,9 +38,7 @@ suite('Value', (): void => {
         schema.validate({
           username: 'Jane Doe'
         }, { valueName: 'root' });
-      }).is.throwing((ex: Error): boolean =>
-        ex.message === 'Missing required property: password (at root.password).' &&
-        Array.isArray((ex as ValidationError).origins));
+      }).is.throwing((ex: Error): boolean => ex.message === 'Missing required property: password (at root.password).');
     });
 
     test('throws an error with the given separator if schema does not match.', async (): Promise<void> => {
@@ -50,9 +46,7 @@ suite('Value', (): void => {
         schema.validate({
           username: 'Jane Doe'
         }, { separator: '/' });
-      }).is.throwing((ex: Error): boolean =>
-        ex.message === 'Missing required property: password (at value/password).' &&
-        Array.isArray((ex as ValidationError).origins));
+      }).is.throwing((ex: Error): boolean => ex.message === 'Missing required property: password (at value/password).');
     });
 
     test('throws an error with the given value name and separator if schema does not match.', async (): Promise<void> => {
@@ -60,17 +54,13 @@ suite('Value', (): void => {
         schema.validate({
           username: 'Jane Doe'
         }, { valueName: 'root', separator: '/' });
-      }).is.throwing((ex: Error): boolean =>
-        ex.message === 'Missing required property: password (at root/password).' &&
-        Array.isArray((ex as ValidationError).origins));
+      }).is.throwing((ex: Error): boolean => ex.message === 'Missing required property: password (at root/password).');
     });
 
     test('throws only the first error when there are more than one.', async (): Promise<void> => {
       assert.that((): void => {
         schema.validate({});
-      }).is.throwing((ex: Error): boolean =>
-        ex.message === `Missing required property: username (at value.username).` &&
-        Array.isArray((ex as ValidationError).origins));
+      }).is.throwing((ex: Error): boolean => ex.message === `Missing required property: username (at value.username).`);
     });
 
     test('does not throw an error if schema matches.', async (): Promise<void> => {

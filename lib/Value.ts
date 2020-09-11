@@ -1,11 +1,11 @@
-import jjv from 'jjv';
-import jjve from 'jjve';
+import { JSONSchema4 } from 'json-schema';
 import { ValidationError } from './ValidationError';
+import { validator } from '@exodus/schemasafe';
 
 class Value {
-  public schema: object;
+  public schema: JSONSchema4;
 
-  public constructor (schema: object) {
+  public constructor (schema: JSONSchema4) {
     this.schema = schema;
   }
 
@@ -13,23 +13,23 @@ class Value {
     valueName?: string;
     separator?: string;
   } = {}): void {
-    const validator = jjv();
-    const getErrors = jjve(validator);
+    const validate = validator(this.schema, { includeErrors: true });
+    const isValid = validate(value);
 
-    const result = validator.validate(this.schema, value);
-    const errors = getErrors(this.schema, value, result);
-
-    if (errors.length === 0) {
+    if (isValid) {
       return;
     }
 
-    const { message, path } = errors[0];
+    const error = validate.errors![0];
 
-    const updatedPath = `${valueName}${path.slice(1).replace(/\./ug, separator)}`;
+    const updatedPath = `${valueName}${error.instanceLocation.slice(1).replace(/\//gu, separator)}`;
+    let message = 'Validation failed';
 
-    const error = new ValidationError(`${message} (at ${updatedPath}).`, errors);
+    if (error.keywordLocation.endsWith('/required')) {
+      message = `Missing required property: ${updatedPath.slice(updatedPath.lastIndexOf(separator) + 1)}`;
+    }
 
-    throw error;
+    throw new ValidationError(`${message} (at ${updatedPath}).`, error);
   }
 
   public isValid (value: any): boolean {
