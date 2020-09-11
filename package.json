@@ -19,10 +19,8 @@
   "main": "build/lib/Value.js",
   "types": "build/lib/Value.d.ts",
   "dependencies": {
-    "@types/jjv": "1.0.29",
-    "@types/jjve": "0.4.29",
-    "jjv": "1.0.2",
-    "jjve": "0.5.2"
+    "@exodus/schemasafe": "1.0.0-rc.2",
+    "json-schema": "0.2.5"
   },
   "devDependencies": {
     "assertthat": "5.2.1",

@@ -6,8 +6,14 @@
     "lib": [ "esnext" ],
     "module": "commonjs",
     "outDir": "build",
+    "paths": {
+      "@exodus/schemasafe": [ "./types/@exodus/schemasafe" ]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "target": "es2019"
-  }
+  },
+  "include": [
+    "./**/*.ts"
+  ]
 }

@@ -1,11 +1,11 @@
-import { Issue } from 'jjve';
+import { ValidationError as OriginError } from '@exodus/schemasafe';
 
 class ValidationError extends Error {
-  public origins: Issue[];
+  public origin: OriginError;
 
-  public constructor (message: string, origins: Issue[]) {
+  public constructor (message: string, origin: OriginError) {
     super(message);
-    this.origins = origins;
+    this.origin = origin;
   }
 }
 
