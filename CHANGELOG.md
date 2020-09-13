@@ -1,3 +1,10 @@
+## [7.1.1](https://github.com/thenativeweb/validate-value/compare/7.1.0...7.1.1) (2020-09-13)
+
+
+### Bug Fixes
+
+* Re-support advanced formats such as alphanumeric. ([8886382](https://github.com/thenativeweb/validate-value/commit/8886382d5475cdb6e694aed897fdd54bedc1fcae))
+
 # [7.1.0](https://github.com/thenativeweb/validate-value/compare/7.0.0...7.1.0) (2020-09-11)
 
 
