@@ -1,26 +1,31 @@
 import { JSONSchema4 } from 'json-schema';
 import { ValidationError } from './ValidationError';
-import { validator } from '@exodus/schemasafe';
+import { Validate, validator } from '@exodus/schemasafe';
 
 class Value {
   public schema: JSONSchema4;
 
+  protected validateInternal: Validate;
+
   public constructor (schema: JSONSchema4) {
     this.schema = schema;
+    this.validateInternal = validator(schema, {
+      extraFormats: true,
+      includeErrors: true
+    });
   }
 
   public validate (value: any, { valueName = 'value', separator = '.' }: {
     valueName?: string;
     separator?: string;
   } = {}): void {
-    const validate = validator(this.schema, { includeErrors: true });
-    const isValid = validate(value);
+    const isValid = this.validateInternal(value);
 
     if (isValid) {
       return;
     }
 
-    const error = validate.errors![0];
+    const error = this.validateInternal.errors![0];
 
     const updatedPath = `${valueName}${error.instanceLocation.slice(1).replace(/\//gu, separator)}`;
     let message = 'Validation failed';

@@ -10,7 +10,8 @@ declare module '@exodus/schemasafe' {
   }
 
   export const validator: (schema: object, options?: {
-    includeErrors?: boolean;
     allErrors?: boolean;
+    extraFormats?: boolean;
+    includeErrors?: boolean;
   }) => Validate;
 }

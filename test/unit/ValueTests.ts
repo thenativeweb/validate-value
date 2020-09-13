@@ -1,5 +1,7 @@
 import { assert } from 'assertthat';
 import { boolean } from '../shared/schemas/boolean';
+import { formats } from '../shared/schemas/formats';
+import { invalid } from '../shared/schemas/invalid';
 import { user } from '../shared/schemas/user';
 import { Value } from '../../lib/Value';
 
@@ -13,6 +15,20 @@ suite('Value', (): void => {
 
     setup(async (): Promise<void> => {
       schema = new Value(user);
+    });
+
+    test('throws an error if the given schema is invalid.', async (): Promise<void> => {
+      assert.that((): void => {
+        // eslint-disable-next-line no-new
+        new Value(invalid);
+      }).is.throwing('Unrecognized format used: "invalid-format" at #');
+    });
+
+    test('does not throw an error on advanced formats.', async (): Promise<void> => {
+      assert.that((): void => {
+        // eslint-disable-next-line no-new
+        new Value(formats);
+      }).is.not.throwing();
     });
 
     test('does not throw an error if value is a falsy value.', async (): Promise<void> => {
