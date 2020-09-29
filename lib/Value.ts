@@ -1,18 +1,19 @@
+import Ajv from 'ajv';
 import { JSONSchema4 } from 'json-schema';
 import { ValidationError } from './ValidationError';
-import { Validate, validator } from '@exodus/schemasafe';
+
+const ajvInstance: Ajv.Ajv = new Ajv();
+
+ajvInstance.addFormat('alphanumeric', /[a-zA-Z0-9]/u);
 
 class Value {
   public schema: JSONSchema4;
 
-  protected validateInternal: Validate;
+  protected validateInternal: Ajv.ValidateFunction;
 
   public constructor (schema: JSONSchema4) {
     this.schema = schema;
-    this.validateInternal = validator(schema, {
-      extraFormats: true,
-      includeErrors: true
-    });
+    this.validateInternal = ajvInstance.compile(schema);
   }
 
   public validate (value: any, { valueName = 'value', separator = '.' }: {
@@ -27,11 +28,17 @@ class Value {
 
     const error = this.validateInternal.errors![0];
 
-    const updatedPath = `${valueName}${error.instanceLocation.slice(1).replace(/\//gu, separator)}`;
+    let updatedPath = `${valueName}${error.dataPath.slice(1).replace(/\//gu, separator)}`;
     let message = 'Validation failed';
 
-    if (error.keywordLocation.endsWith('/required')) {
-      message = `Missing required property: ${updatedPath.slice(updatedPath.lastIndexOf(separator) + 1)}`;
+    if (error.keyword === 'required') {
+      const missingPropertyName = (error.params as Ajv.RequiredParams).missingProperty;
+
+      message = `Missing required property: ${missingPropertyName}`;
+
+      // Ajv treats missing required properties as errors on the object that should have the property, so the name of
+      // the missing property is missing in the data path and must be appended.
+      updatedPath += `${separator}${missingPropertyName}`;
     }
 
     throw new ValidationError(`${message} (at ${updatedPath}).`, error);
