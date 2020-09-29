@@ -1,3 +1,10 @@
+# [7.2.0](https://github.com/thenativeweb/validate-value/compare/7.1.1...7.2.0) (2020-09-29)
+
+
+### Features
+
+* Replace @exodus/schemasafe with ajv. ([#177](https://github.com/thenativeweb/validate-value/issues/177)) ([2679a4e](https://github.com/thenativeweb/validate-value/commit/2679a4ee18b74e1ae050df7a9b895f6e402e7830))
+
 ## [7.1.1](https://github.com/thenativeweb/validate-value/compare/7.1.0...7.1.1) (2020-09-13)
 
 
