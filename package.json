@@ -19,7 +19,7 @@
   "main": "build/lib/Value.js",
   "types": "build/lib/Value.d.ts",
   "dependencies": {
-    "@exodus/schemasafe": "1.0.0-rc.2",
+    "ajv": "6.12.5",
     "json-schema": "0.2.5"
   },
   "devDependencies": {

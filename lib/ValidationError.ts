@@ -1,9 +1,9 @@
-import { ValidationError as OriginError } from '@exodus/schemasafe';
+import Ajv from 'ajv';
 
 class ValidationError extends Error {
-  public origin: OriginError;
+  public origin: Ajv.ErrorObject;
 
-  public constructor (message: string, origin: OriginError) {
+  public constructor (message: string, origin: Ajv.ErrorObject) {
     super(message);
     this.origin = origin;
   }

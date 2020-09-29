@@ -21,7 +21,7 @@ suite('Value', (): void => {
       assert.that((): void => {
         // eslint-disable-next-line no-new
         new Value(invalid);
-      }).is.throwing('Unrecognized format used: "invalid-format" at #');
+      }).is.throwing('unknown format "invalid-format" is used in schema at path "#"');
     });
 
     test('does not throw an error on advanced formats.', async (): Promise<void> => {
