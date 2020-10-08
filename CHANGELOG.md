@@ -1,3 +1,10 @@
+## [7.2.1](https://github.com/thenativeweb/validate-value/compare/7.2.0...7.2.1) (2020-10-08)
+
+
+### Bug Fixes
+
+* Fix missing first separator in paths in error messages. ([#181](https://github.com/thenativeweb/validate-value/issues/181)) ([e6be031](https://github.com/thenativeweb/validate-value/commit/e6be0318428a5d8c3c4909aa1ea47d30b60849c3))
+
 # [7.2.0](https://github.com/thenativeweb/validate-value/compare/7.1.1...7.2.0) (2020-09-29)
 
 
