@@ -2,6 +2,7 @@ import { assert } from 'assertthat';
 import { boolean } from '../shared/schemas/boolean';
 import { formats } from '../shared/schemas/formats';
 import { invalid } from '../shared/schemas/invalid';
+import { regex } from '../shared/schemas/regex';
 import { user } from '../shared/schemas/user';
 import { Value } from '../../lib/Value';
 
@@ -77,6 +78,14 @@ suite('Value', (): void => {
       assert.that((): void => {
         schema.validate({});
       }).is.throwing((ex: Error): boolean => ex.message === `Missing required property: username (at value.username).`);
+    });
+
+    test('throws an error when a regex string validation fails.', async (): Promise<void> => {
+      schema = new Value(regex);
+
+      assert.that((): void => {
+        schema.validate({ value: '111' });
+      }).is.throwing((ex: Error): boolean => ex.message === `Validation failed (at value.value).`);
     });
 
     test('does not throw an error if schema matches.', async (): Promise<void> => {
