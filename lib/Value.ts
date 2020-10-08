@@ -28,7 +28,7 @@ class Value {
 
     const error = this.validateInternal.errors![0];
 
-    let updatedPath = `${valueName}${error.dataPath.slice(1).replace(/\//gu, separator)}`;
+    let updatedPath = `${valueName}${error.dataPath.replace(/\//gu, separator)}`;
     let message = 'Validation failed';
 
     if (error.keyword === 'required') {
