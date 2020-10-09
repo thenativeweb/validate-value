@@ -42,14 +42,6 @@ suite('Value', (): void => {
       }).is.not.throwing();
     });
 
-    test('throws an error if schema does not match.', async (): Promise<void> => {
-      assert.that((): void => {
-        schema.validate({
-          username: 'Jane Doe'
-        });
-      }).is.throwing((ex: Error): boolean => ex.message === 'Missing required property: password (at value.password).');
-    });
-
     test('throws an error with the given value name if schema does not match.', async (): Promise<void> => {
       assert.that((): void => {
         schema.validate({
@@ -95,6 +87,46 @@ suite('Value', (): void => {
           password: 'secret'
         });
       }).is.not.throwing();
+    });
+
+    suite('error messages', (): void => {
+      test('throws an error if a required property is missing.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            username: { type: 'string' },
+            password: { type: 'string' }
+          },
+          required: [ 'username', 'password' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            username: 'Jane Doe'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Missing required property: password (at value.password).');
+      });
+
+      test('throws an error if an additional property is given, but additional properties are forbidden.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            username: { type: 'string' },
+            password: { type: 'string' }
+          },
+          required: [ 'username', 'password' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            username: 'Jane Doe',
+            password: 'secret',
+            login: 'jane.doe'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Unexpected additional property: login (at value.login).');
+      });
     });
   });
 
