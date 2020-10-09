@@ -1,3 +1,10 @@
+# [7.3.0](https://github.com/thenativeweb/validate-value/compare/7.2.1...7.3.0) (2020-10-09)
+
+
+### Features
+
+* Add more error messages. ([#182](https://github.com/thenativeweb/validate-value/issues/182)) ([b7e6e1f](https://github.com/thenativeweb/validate-value/commit/b7e6e1f43aea1a0349c2791ea86db3a07bdde13a))
+
 ## [7.2.1](https://github.com/thenativeweb/validate-value/compare/7.2.0...7.2.1) (2020-10-08)
 
 
