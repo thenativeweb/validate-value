@@ -19,7 +19,7 @@
   "main": "build/lib/Value.js",
   "types": "build/lib/Value.d.ts",
   "dependencies": {
-    "ajv": "6.12.5",
+    "ajv": "6.12.6",
     "json-schema": "0.2.5"
   },
   "devDependencies": {
