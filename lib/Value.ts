@@ -28,17 +28,31 @@ class Value {
 
     const error = this.validateInternal.errors![0];
 
-    let updatedPath = `${valueName}${error.dataPath.slice(1).replace(/\//gu, separator)}`;
+    let updatedPath = `${valueName}${error.dataPath.replace(/\//gu, separator)}`;
     let message = 'Validation failed';
 
-    if (error.keyword === 'required') {
-      const missingPropertyName = (error.params as Ajv.RequiredParams).missingProperty;
+    switch (error.keyword) {
+      case 'required': {
+        const missingPropertyName = (error.params as Ajv.RequiredParams).missingProperty;
 
-      message = `Missing required property: ${missingPropertyName}`;
+        message = `Missing required property: ${missingPropertyName}`;
+        updatedPath += `${separator}${missingPropertyName}`;
 
-      // Ajv treats missing required properties as errors on the object that should have the property, so the name of
-      // the missing property is missing in the data path and must be appended.
-      updatedPath += `${separator}${missingPropertyName}`;
+        break;
+      }
+
+      case 'additionalProperties': {
+        const additionalPropertyName = (error.params as Ajv.AdditionalPropertiesParams).additionalProperty;
+
+        message = `Unexpected additional property: ${additionalPropertyName}`;
+        updatedPath += `${separator}${additionalPropertyName}`;
+
+        break;
+      }
+
+      default: {
+        // Intentionally left blank.
+      }
     }
 
     throw new ValidationError(`${message} (at ${updatedPath}).`, error);

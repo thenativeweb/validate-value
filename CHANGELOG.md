@@ -1,3 +1,24 @@
+## [7.3.1](https://github.com/thenativeweb/validate-value/compare/7.3.0...7.3.1) (2020-10-12)
+
+
+### Bug Fixes
+
+* bump ajv from 6.12.5 to 6.12.6 ([#183](https://github.com/thenativeweb/validate-value/issues/183)) ([4898cdf](https://github.com/thenativeweb/validate-value/commit/4898cdfcfb6cc54fff2f3ddeadd0758abbc7535a))
+
+# [7.3.0](https://github.com/thenativeweb/validate-value/compare/7.2.1...7.3.0) (2020-10-09)
+
+
+### Features
+
+* Add more error messages. ([#182](https://github.com/thenativeweb/validate-value/issues/182)) ([b7e6e1f](https://github.com/thenativeweb/validate-value/commit/b7e6e1f43aea1a0349c2791ea86db3a07bdde13a))
+
+## [7.2.1](https://github.com/thenativeweb/validate-value/compare/7.2.0...7.2.1) (2020-10-08)
+
+
+### Bug Fixes
+
+* Fix missing first separator in paths in error messages. ([#181](https://github.com/thenativeweb/validate-value/issues/181)) ([e6be031](https://github.com/thenativeweb/validate-value/commit/e6be0318428a5d8c3c4909aa1ea47d30b60849c3))
+
 # [7.2.0](https://github.com/thenativeweb/validate-value/compare/7.1.1...7.2.0) (2020-09-29)
 
 
