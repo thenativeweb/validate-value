@@ -1,6 +1,6 @@
 {
   "name": "validate-value",
-  "version": "7.3.1",
+  "version": "8.0.0",
   "description": "validate-value validates values against JSON schemas.",
   "contributors": [
     {

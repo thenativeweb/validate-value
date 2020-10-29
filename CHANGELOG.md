@@ -1,3 +1,15 @@
+# [8.0.0](https://github.com/thenativeweb/validate-value/compare/7.3.1...8.0.0) (2020-10-29)
+
+
+### Features
+
+* Update used type to JSONSchema 7. ([#190](https://github.com/thenativeweb/validate-value/issues/190)) ([bd4ffc2](https://github.com/thenativeweb/validate-value/commit/bd4ffc26e7b3ce1afa3aa8239e7881ea6d624d5e))
+
+
+### BREAKING CHANGES
+
+* JSONSchema7 is not compatible with JSONSchema4.
+
 ## [7.3.1](https://github.com/thenativeweb/validate-value/compare/7.3.0...7.3.1) (2020-10-12)
 
 
