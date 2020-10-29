@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { JSONSchema4 } from 'json-schema';
+import { JSONSchema7 } from 'json-schema';
 import { ValidationError } from './ValidationError';
 
 const ajvInstance: Ajv.Ajv = new Ajv();
@@ -7,11 +7,11 @@ const ajvInstance: Ajv.Ajv = new Ajv();
 ajvInstance.addFormat('alphanumeric', /[a-zA-Z0-9]/u);
 
 class Value {
-  public schema: JSONSchema4;
+  public schema: JSONSchema7;
 
   protected validateInternal: Ajv.ValidateFunction;
 
-  public constructor (schema: JSONSchema4) {
+  public constructor (schema: JSONSchema7) {
     this.schema = schema;
     this.validateInternal = ajvInstance.compile(schema);
   }

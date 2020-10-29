@@ -1,6 +1,6 @@
-import { JSONSchema4 } from 'json-schema';
+import { JSONSchema7 } from 'json-schema';
 
-const regex: JSONSchema4 = {
+const regex: JSONSchema7 = {
   type: 'object',
   properties: {
     value: {

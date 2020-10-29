@@ -1,6 +1,6 @@
-import { JSONSchema4 } from 'json-schema';
+import { JSONSchema7 } from 'json-schema';
 
-const user: JSONSchema4 = {
+const user: JSONSchema7 = {
   type: 'object',
   properties: {
     username: { type: 'string' },

@@ -1,6 +1,6 @@
-import { JSONSchema4 } from 'json-schema';
+import { JSONSchema7 } from 'json-schema';
 
-const boolean: JSONSchema4 = {
+const boolean: JSONSchema7 = {
   type: 'boolean'
 };
 
