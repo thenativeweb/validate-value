@@ -1,6 +1,6 @@
-import { JSONSchema4 } from 'json-schema';
+import { JSONSchema7 } from 'json-schema';
 
-const formats: JSONSchema4 = {
+const formats: JSONSchema7 = {
   type: 'string',
   format: 'alphanumeric'
 };
