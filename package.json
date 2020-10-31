@@ -16,16 +16,16 @@
       "email": "hannes.leutloff@thenativeweb.io"
     }
   ],
-  "main": "build/lib/Value.js",
-  "types": "build/lib/Value.d.ts",
+  "main": "build/lib/index.js",
+  "types": "build/lib/index.d.ts",
   "dependencies": {
     "ajv": "6.12.6",
     "json-schema": "0.2.5"
   },
   "devDependencies": {
     "assertthat": "5.2.1",
-    "roboter": "11.4.6",
-    "semantic-release-configuration": "1.0.23"
+    "roboter": "11.4.8",
+    "semantic-release-configuration": "1.0.24"
   },
   "repository": {
     "type": "git",

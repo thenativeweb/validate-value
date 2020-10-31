@@ -7,10 +7,6 @@ import { user } from '../shared/schemas/user';
 import { Value } from '../../lib/Value';
 
 suite('Value', (): void => {
-  test('is a function.', async (): Promise<void> => {
-    assert.that(Value).is.ofType('function');
-  });
-
   suite('validate', (): void => {
     let schema: Value;
 
