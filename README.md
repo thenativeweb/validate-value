@@ -23,13 +23,13 @@ $ npm install validate-value
 First you need to integrate validate-value into your application:
 
 ```javascript
-const { Value } = require('validate-value');
+const { Value, isOfType } = require('validate-value');
 ```
 
 If you use TypeScript, use the following code instead:
 
 ```typescript
-import { Value } from 'validate-value';
+import { Value, isOfType } from 'validate-value';
 ```
 
 Then, create a new instance and provide a [JSON schema](https://json-schema.org/learn/getting-started-step-by-step.html) that you would like to use for validation:
@@ -86,6 +86,59 @@ const user = {
 
 console.log(value.isValid(user));
 // => true
+```
+
+### Verifying that a variable is of a specific type
+
+To verify that a variable is of a specific type, use the `isOfType` function. Hand over a value you would like to verify, and a JSON schema describing that type. The function returns `true` if the given variable matches the schema, and `false` if it doesn't:
+
+```javascript
+const user = {
+  username: 'Jane Doe',
+  password: 'secret'
+};
+
+const schema = {
+  type: 'object',
+  properties: {
+    username: { type: 'string' },
+    password: { type: 'string' }
+  },
+  additionalProperties: false,
+  required: [ 'username', 'password' ]
+};
+
+if (isOfType(user, schema)) {
+  // ...
+}
+```
+
+When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard:
+
+```typescript
+interface User {
+  username: string;
+  password: string;
+}
+
+const user = {
+  username: 'Jane Doe',
+  password: 'secret'
+};
+
+const schema = {
+  type: 'object',
+  properties: {
+    username: { type: 'string' },
+    password: { type: 'string' }
+  },
+  additionalProperties: false,
+  required: [ 'username', 'password' ]
+};
+
+if (isOfType<User>(user, schema)) {
+  // ...
+}
 ```
 
 ## Running the build
