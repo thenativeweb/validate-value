@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/thenativeweb/validate-value/compare/8.0.0...8.1.0) (2020-10-31)
+
+
+### Features
+
+* Add the isOfType function. ([#194](https://github.com/thenativeweb/validate-value/issues/194)) ([368a97c](https://github.com/thenativeweb/validate-value/commit/368a97cdb559828125fcc3d8d77738c815158356))
+
 # [8.0.0](https://github.com/thenativeweb/validate-value/compare/7.3.1...8.0.0) (2020-10-29)
 
 
