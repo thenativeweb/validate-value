@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/thenativeweb/validate-value/compare/8.1.0...8.1.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* Fix headline for robot section in readme. ([#195](https://github.com/thenativeweb/validate-value/issues/195)) ([b228f89](https://github.com/thenativeweb/validate-value/commit/b228f89aa7a214d3bc790d374eb908e4967cd36d))
+
 # [8.1.0](https://github.com/thenativeweb/validate-value/compare/8.0.0...8.1.0) (2020-10-31)
 
 
