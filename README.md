@@ -93,6 +93,8 @@ console.log(value.isValid(user));
 To verify that a variable is of a specific type, use the `isOfType` function. Hand over a value you would like to verify, and a JSON schema describing that type. The function returns `true` if the given variable matches the schema, and `false` if it doesn't:
 
 ```javascript
+const { isTypeOf } = require('validate-value'); 
+
 const user = {
   username: 'Jane Doe',
   password: 'secret'
@@ -113,9 +115,11 @@ if (isOfType(user, schema)) {
 }
 ```
 
-When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard:
+When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard. Also it is recommended to use the constant values exported by validate-value instead of the string literals as above, as they are the type-safe versions of these literals:
 
 ```typescript
+import { isTypeOf, value as v }
+
 interface User {
   username: string;
   password: string;
@@ -127,10 +131,10 @@ const user = {
 };
 
 const schema = {
-  type: 'object',
+  type: v.object,
   properties: {
-    username: { type: 'string' },
-    password: { type: 'string' }
+    username: { type: v.string },
+    password: { type: v.string }
   },
   additionalProperties: false,
   required: [ 'username', 'password' ]
