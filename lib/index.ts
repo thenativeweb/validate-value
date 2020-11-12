@@ -1,4 +1,5 @@
 import { isOfType } from './isOfType';
 import { Value } from './Value';
+import { values } from './values';
 
-export { isOfType, Value };
+export { isOfType, Value, values };

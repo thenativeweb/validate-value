@@ -1,3 +1,10 @@
+# [8.2.0](https://github.com/thenativeweb/validate-value/compare/8.1.1...8.2.0) (2020-11-12)
+
+
+### Features
+
+* Add constant typesafe tokens ([#210](https://github.com/thenativeweb/validate-value/issues/210)) ([db747b7](https://github.com/thenativeweb/validate-value/commit/db747b79e75767ee609c3572a25749c009bafb60))
+
 ## [8.1.1](https://github.com/thenativeweb/validate-value/compare/8.1.0...8.1.1) (2020-11-03)
 
 
