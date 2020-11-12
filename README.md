@@ -115,8 +115,7 @@ if (isOfType(user, schema)) {
 }
 ```
 
-When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard. Also it is recommended to use the constant values
-exported by the validate-value instead of using string literals like above. These are type safe versions of these literals.
+When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard. Also it is recommended to use the constant values exported by validate-value instead of the string literals as above, as they are the type-safe versions of these literals:
 
 ```typescript
 import { isTypeOf, value as v }
