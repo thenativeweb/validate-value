@@ -1,3 +1,10 @@
+# [8.3.0](https://github.com/thenativeweb/validate-value/compare/8.2.0...8.3.0) (2020-11-13)
+
+
+### Features
+
+* Add custom error message for minlength validation errors. ([#212](https://github.com/thenativeweb/validate-value/issues/212)) ([b7639cd](https://github.com/thenativeweb/validate-value/commit/b7639cd37aa48b1464faf9a373ab8fc7a3849181))
+
 # [8.2.0](https://github.com/thenativeweb/validate-value/compare/8.1.1...8.2.0) (2020-11-12)
 
 
