@@ -123,6 +123,23 @@ suite('Value', (): void => {
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'Unexpected additional property: login (at value.login).');
       });
+
+      test('throws an error if a string undercuts a minimum length.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            username: { type: 'string', minLength: 4 }
+          },
+          required: [ 'username' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            username: 'foo'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'String is too short (3 chars), minimum 4 (at value.username).');
+      });
     });
   });
 

@@ -1,4 +1,5 @@
 import Ajv from 'ajv';
+import { getByDataPath } from './getByDataPath';
 import { JSONSchema7 } from 'json-schema';
 import { ValidationError } from './ValidationError';
 
@@ -27,6 +28,7 @@ class Value {
     }
 
     const error = this.validateInternal.errors![0];
+    const failingValue = getByDataPath({ object: value, dataPath: error.dataPath });
 
     let updatedPath = `${valueName}${error.dataPath.replace(/\//gu, separator)}`;
     let message = 'Validation failed';
@@ -46,6 +48,15 @@ class Value {
 
         message = `Unexpected additional property: ${additionalPropertyName}`;
         updatedPath += `${separator}${additionalPropertyName}`;
+
+        break;
+      }
+
+      case 'minLength': {
+        const minPropertyLength = (error.params as Ajv.LimitParams).limit;
+        const actualLength = failingValue.length;
+
+        message = `String is too short (${actualLength} chars), minimum ${minPropertyLength}`;
 
         break;
       }
