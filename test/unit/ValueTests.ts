@@ -140,6 +140,57 @@ suite('Value', (): void => {
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'String is too short (3 chars), minimum 4 (at value.username).');
       });
+
+      test('throws an error if a string exceeds a maximum length.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            username: { type: 'string', maxLength: 20 }
+          },
+          required: [ 'username' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            username: 'foofoofoofoofoofoofoo'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'String is too long (21 chars), maximum 20 (at value.username).');
+      });
+
+      test('throws an error if a value undercuts a minimum.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            count: { type: 'number', minimum: 5 }
+          },
+          required: [ 'count' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            count: 3
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Value 3 is less than minimum 5 (at value.count).');
+      });
+
+      test('throws an error if a value exceeds a maximum.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            count: { type: 'number', maximum: 7 }
+          },
+          required: [ 'count' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            count: 19
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Value 19 is more than maximum 7 (at value.count).');
+      });
     });
   });
 
