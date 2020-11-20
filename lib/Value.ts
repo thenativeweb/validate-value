@@ -61,6 +61,42 @@ class Value {
         break;
       }
 
+      case 'maxLength': {
+        const maxPropertyLength = (error.params as Ajv.LimitParams).limit;
+        const actualLength = failingValue.length;
+
+        message = `String is too long (${actualLength} chars), maximum ${maxPropertyLength}`;
+
+        break;
+      }
+
+      case 'minimum': {
+        const minimumValue = (error.params as Ajv.LimitParams).limit;
+        const actualValue = failingValue;
+
+        message = `Value ${actualValue} is less than minimum ${minimumValue}`;
+
+        break;
+      }
+
+      case 'maximum': {
+        const maximumValue = (error.params as Ajv.LimitParams).limit;
+        const actualValue = failingValue;
+
+        message = `Value ${actualValue} is more than maximum ${maximumValue}`;
+
+        break;
+      }
+
+      case 'enum': {
+        const { allowedValues } = error.params as Ajv.EnumParams;
+        const actualValue = failingValue;
+
+        message = `No enum match (${actualValue}), expects: ${allowedValues.join(', ')}`;
+
+        break;
+      }
+
       default: {
         // Intentionally left blank.
       }
