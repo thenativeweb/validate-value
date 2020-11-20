@@ -1,3 +1,10 @@
+# [8.4.0](https://github.com/thenativeweb/validate-value/compare/8.3.0...8.4.0) (2020-11-20)
+
+
+### Features
+
+* Add error messages for maxLength, minimum and maximum. ([#218](https://github.com/thenativeweb/validate-value/issues/218)) ([0b4c116](https://github.com/thenativeweb/validate-value/commit/0b4c116f71516a352972676e2863ee2334f7df24))
+
 # [8.3.0](https://github.com/thenativeweb/validate-value/compare/8.2.0...8.3.0) (2020-11-13)
 
 
