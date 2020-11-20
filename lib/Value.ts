@@ -88,6 +88,15 @@ class Value {
         break;
       }
 
+      case 'enum': {
+        const { allowedValues } = error.params as Ajv.EnumParams;
+        const actualValue = failingValue;
+
+        message = `No enum match (${actualValue}), expects: ${allowedValues.join(', ')}`;
+
+        break;
+      }
+
       default: {
         // Intentionally left blank.
       }

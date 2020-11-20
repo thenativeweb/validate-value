@@ -191,6 +191,23 @@ suite('Value', (): void => {
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'Value 19 is more than maximum 7 (at value.count).');
       });
+
+      test('throws an error if a string does not match any value of an enum.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            result: { type: 'string', enum: [ 'succeed', 'fail', 'reject' ]}
+          },
+          required: [ 'result' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            result: 'invalid-value'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'No enum match (invalid-value), expects: succeed, fail, reject (at value.result).');
+      });
     });
   });
 
