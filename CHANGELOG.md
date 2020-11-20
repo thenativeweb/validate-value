@@ -1,3 +1,10 @@
+# [8.5.0](https://github.com/thenativeweb/validate-value/compare/8.4.0...8.5.0) (2020-11-20)
+
+
+### Features
+
+* Add error message for enum. ([#219](https://github.com/thenativeweb/validate-value/issues/219)) ([37664fb](https://github.com/thenativeweb/validate-value/commit/37664fb3b3a70495e49ad7a118453a88190b5a06))
+
 # [8.4.0](https://github.com/thenativeweb/validate-value/compare/8.3.0...8.4.0) (2020-11-20)
 
 
