@@ -2,7 +2,6 @@ import { assert } from 'assertthat';
 import { boolean } from '../shared/schemas/boolean';
 import { formats } from '../shared/schemas/formats';
 import { invalid } from '../shared/schemas/invalid';
-import { regex } from '../shared/schemas/regex';
 import { user } from '../shared/schemas/user';
 import { Value } from '../../lib/Value';
 
@@ -66,14 +65,6 @@ suite('Value', (): void => {
       assert.that((): void => {
         schema.validate({});
       }).is.throwing((ex: Error): boolean => ex.message === `Missing required property: username (at value.username).`);
-    });
-
-    test('throws an error when a regex string validation fails.', async (): Promise<void> => {
-      schema = new Value(regex);
-
-      assert.that((): void => {
-        schema.validate({ value: '111' });
-      }).is.throwing((ex: Error): boolean => ex.message === `Validation failed (at value.value).`);
     });
 
     test('does not throw an error if schema matches.', async (): Promise<void> => {
@@ -207,6 +198,23 @@ suite('Value', (): void => {
             result: 'invalid-value'
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'No enum match (invalid-value), expects: succeed, fail, reject (at value.result).');
+      });
+
+      test('throws an error if a string does not match a regular expression.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            result: { type: 'string', pattern: '^thenativeweb$' }
+          },
+          required: [ 'result' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            result: 'invalid-value'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'String does not match pattern: ^thenativeweb$ (at value.result).');
       });
     });
   });

@@ -97,6 +97,14 @@ class Value {
         break;
       }
 
+      case 'pattern': {
+        const { pattern } = error.params as Ajv.PatternParams;
+
+        message = `String does not match pattern: ${pattern}`;
+
+        break;
+      }
+
       default: {
         // Intentionally left blank.
       }
