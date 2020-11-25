@@ -17,7 +17,7 @@ suite('Value', (): void => {
       assert.that((): void => {
         // eslint-disable-next-line no-new
         new Value(invalid);
-      }).is.throwing('unknown format "invalid-format" is used in schema at path "#"');
+      }).is.throwing('unknown format "invalid-format" ignored in schema at path "#"');
     });
 
     test('does not throw an error on advanced formats.', async (): Promise<void> => {
@@ -74,6 +74,23 @@ suite('Value', (): void => {
           password: 'secret'
         });
       }).is.not.throwing();
+    });
+
+    test('supports additional formats.', async (): Promise<void> => {
+      schema = new Value({
+        type: 'object',
+        properties: {
+          id: { type: 'string', format: 'uuid' }
+        },
+        required: [ 'id' ],
+        additionalProperties: false
+      });
+
+      assert.that((): void => {
+        schema.validate({
+          id: '23'
+        });
+      }).is.throwing((ex: Error): boolean => ex.message === 'Value does not satisfy format: uuid (at value.id).');
     });
 
     suite('error messages', (): void => {

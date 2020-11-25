@@ -7,7 +7,7 @@ suite('isOfType', (): void => {
   test('throws an error if the given schema is invalid.', async (): Promise<void> => {
     assert.that((): void => {
       isOfType({}, invalid);
-    }).is.throwing('unknown format "invalid-format" is used in schema at path "#"');
+    }).is.throwing('unknown format "invalid-format" ignored in schema at path "#"');
   });
 
   test('returns true if the given value matches the schema.', async (): Promise<void> => {

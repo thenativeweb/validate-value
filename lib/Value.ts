@@ -1,16 +1,18 @@
-import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 import { getByDataPath } from './getByDataPath';
 import { JSONSchema7 } from 'json-schema';
 import { ValidationError } from './ValidationError';
+import Ajv, { ValidateFunction } from 'ajv';
 
-const ajvInstance: Ajv.Ajv = new Ajv();
+const ajvInstance = new Ajv();
 
+addFormats(ajvInstance);
 ajvInstance.addFormat('alphanumeric', /[a-zA-Z0-9]/u);
 
 class Value {
   public schema: JSONSchema7;
 
-  protected validateInternal: Ajv.ValidateFunction;
+  protected validateInternal: ValidateFunction;
 
   public constructor (schema: JSONSchema7) {
     this.schema = schema;
@@ -35,7 +37,7 @@ class Value {
 
     switch (error.keyword) {
       case 'required': {
-        const missingPropertyName = (error.params as Ajv.RequiredParams).missingProperty;
+        const missingPropertyName = error.params.missingProperty;
 
         message = `Missing required property: ${missingPropertyName}`;
         updatedPath += `${separator}${missingPropertyName}`;
@@ -44,7 +46,7 @@ class Value {
       }
 
       case 'additionalProperties': {
-        const additionalPropertyName = (error.params as Ajv.AdditionalPropertiesParams).additionalProperty;
+        const additionalPropertyName = error.params.additionalProperty;
 
         message = `Unexpected additional property: ${additionalPropertyName}`;
         updatedPath += `${separator}${additionalPropertyName}`;
@@ -53,7 +55,7 @@ class Value {
       }
 
       case 'minLength': {
-        const minPropertyLength = (error.params as Ajv.LimitParams).limit;
+        const minPropertyLength = error.params.limit;
         const actualLength = failingValue.length;
 
         message = `String is too short (${actualLength} chars), minimum ${minPropertyLength}`;
@@ -62,7 +64,7 @@ class Value {
       }
 
       case 'maxLength': {
-        const maxPropertyLength = (error.params as Ajv.LimitParams).limit;
+        const maxPropertyLength = error.params.limit;
         const actualLength = failingValue.length;
 
         message = `String is too long (${actualLength} chars), maximum ${maxPropertyLength}`;
@@ -71,7 +73,7 @@ class Value {
       }
 
       case 'minimum': {
-        const minimumValue = (error.params as Ajv.LimitParams).limit;
+        const minimumValue = error.params.limit;
         const actualValue = failingValue;
 
         message = `Value ${actualValue} is less than minimum ${minimumValue}`;
@@ -80,7 +82,7 @@ class Value {
       }
 
       case 'maximum': {
-        const maximumValue = (error.params as Ajv.LimitParams).limit;
+        const maximumValue = error.params.limit;
         const actualValue = failingValue;
 
         message = `Value ${actualValue} is more than maximum ${maximumValue}`;
@@ -89,7 +91,7 @@ class Value {
       }
 
       case 'enum': {
-        const { allowedValues } = error.params as Ajv.EnumParams;
+        const { allowedValues } = error.params;
         const actualValue = failingValue;
 
         message = `No enum match (${actualValue}), expects: ${allowedValues.join(', ')}`;
@@ -98,7 +100,7 @@ class Value {
       }
 
       case 'pattern': {
-        const { pattern } = error.params as Ajv.PatternParams;
+        const { pattern } = error.params;
 
         message = `String does not match pattern: ${pattern}`;
 
@@ -106,7 +108,7 @@ class Value {
       }
 
       case 'minItems': {
-        const { limit } = error.params as Ajv.LimitParams;
+        const { limit } = error.params;
         const actualCount = failingValue.length;
 
         message = `Array is too short (${actualCount}), minimum ${limit}`;
@@ -115,11 +117,18 @@ class Value {
       }
 
       case 'maxItems': {
-        const { limit } = error.params as Ajv.LimitParams;
+        const { limit } = error.params;
         const actualCount = failingValue.length;
 
         message = `Array is too long (${actualCount}), maximum ${limit}`;
 
+        break;
+      }
+
+      case 'format': {
+        const { format } = error.params;
+
+        message = `Value does not satisfy format: ${format}`;
         break;
       }
 
