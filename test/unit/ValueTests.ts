@@ -216,6 +216,23 @@ suite('Value', (): void => {
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'String does not match pattern: ^thenativeweb$ (at value.result).');
       });
+
+      test('throws an error if an array is too short.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            result: { type: 'array', minItems: 1 }
+          },
+          required: [ 'result' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            result: []
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Array is too short (0), minimum 1 (at value.result).');
+      });
     });
   });
 
