@@ -1,3 +1,10 @@
+# [8.7.0](https://github.com/thenativeweb/validate-value/compare/8.6.0...8.7.0) (2020-11-25)
+
+
+### Features
+
+* Add minItems and maxItems checks for arrays. ([#224](https://github.com/thenativeweb/validate-value/issues/224)) ([9e70dfa](https://github.com/thenativeweb/validate-value/commit/9e70dfac781cf091a686a5da45ed059bd2da1928))
+
 # [8.6.0](https://github.com/thenativeweb/validate-value/compare/8.5.0...8.6.0) (2020-11-25)
 
 
