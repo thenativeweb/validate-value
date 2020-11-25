@@ -233,6 +233,23 @@ suite('Value', (): void => {
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'Array is too short (0), minimum 1 (at value.result).');
       });
+
+      test('throws an error if an array is too long.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            result: { type: 'array', maxItems: 1 }
+          },
+          required: [ 'result' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            result: [ 23, 42 ]
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Array is too long (2), maximum 1 (at value.result).');
+      });
     });
   });
 

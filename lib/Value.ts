@@ -114,6 +114,15 @@ class Value {
         break;
       }
 
+      case 'maxItems': {
+        const { limit } = error.params as Ajv.LimitParams;
+        const actualCount = failingValue.length;
+
+        message = `Array is too long (${actualCount}), maximum ${limit}`;
+
+        break;
+      }
+
       default: {
         // Intentionally left blank.
       }
