@@ -1,3 +1,10 @@
+# [8.8.0](https://github.com/thenativeweb/validate-value/compare/8.7.0...8.8.0) (2020-11-25)
+
+
+### Features
+
+* Support additional formats. ([#225](https://github.com/thenativeweb/validate-value/issues/225)) ([edb1922](https://github.com/thenativeweb/validate-value/commit/edb192240a31d910ed21bce943ba4658db9ba336))
+
 # [8.7.0](https://github.com/thenativeweb/validate-value/compare/8.6.0...8.7.0) (2020-11-25)
 
 
