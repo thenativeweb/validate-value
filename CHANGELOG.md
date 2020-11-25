@@ -1,3 +1,10 @@
+# [8.6.0](https://github.com/thenativeweb/validate-value/compare/8.5.0...8.6.0) (2020-11-25)
+
+
+### Features
+
+* Improve error messages for regex. ([#223](https://github.com/thenativeweb/validate-value/issues/223)) ([6c32e5f](https://github.com/thenativeweb/validate-value/commit/6c32e5f89305b5387be5b13e04c48cdc90fd648c))
+
 # [8.5.0](https://github.com/thenativeweb/validate-value/compare/8.4.0...8.5.0) (2020-11-20)
 
 
