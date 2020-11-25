@@ -2,7 +2,6 @@ import { assert } from 'assertthat';
 import { boolean } from '../shared/schemas/boolean';
 import { formats } from '../shared/schemas/formats';
 import { invalid } from '../shared/schemas/invalid';
-import { regex } from '../shared/schemas/regex';
 import { user } from '../shared/schemas/user';
 import { Value } from '../../lib/Value';
 
