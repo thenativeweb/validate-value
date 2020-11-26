@@ -132,6 +132,14 @@ class Value {
         break;
       }
 
+      case 'type': {
+        const { type } = error.params;
+        const actualType = typeof failingValue;
+
+        message = `Invalid type: ${actualType} should be ${type}`;
+        break;
+      }
+
       default: {
         // Intentionally left blank.
       }
