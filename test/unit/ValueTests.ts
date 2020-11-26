@@ -267,6 +267,23 @@ suite('Value', (): void => {
           });
         }).is.throwing((ex: Error): boolean => ex.message === 'Array is too long (2), maximum 1 (at value.result).');
       });
+
+      test('throws an error if a value is of wrong type.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            result: { type: 'number' }
+          },
+          required: [ 'result' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            result: '23'
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Invalid type: string should be number (at value.result).');
+      });
     });
   });
 
