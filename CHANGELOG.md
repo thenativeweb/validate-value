@@ -1,3 +1,10 @@
+# [8.9.0](https://github.com/thenativeweb/validate-value/compare/8.8.1...8.9.0) (2020-11-26)
+
+
+### Features
+
+* Support type. ([#227](https://github.com/thenativeweb/validate-value/issues/227)) ([066522f](https://github.com/thenativeweb/validate-value/commit/066522f223ae3e6d7e5bf4172c6daac934929ef5))
+
 ## [8.8.1](https://github.com/thenativeweb/validate-value/compare/8.8.0...8.8.1) (2020-11-26)
 
 
