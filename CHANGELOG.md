@@ -1,3 +1,10 @@
+## [8.9.1](https://github.com/thenativeweb/validate-value/compare/8.9.0...8.9.1) (2020-11-27)
+
+
+### Bug Fixes
+
+* Allow union types. ([#233](https://github.com/thenativeweb/validate-value/issues/233)) ([fb66fe4](https://github.com/thenativeweb/validate-value/commit/fb66fe4294df848d7a2e2be14569bf9f035de628))
+
 # [8.9.0](https://github.com/thenativeweb/validate-value/compare/8.8.1...8.9.0) (2020-11-26)
 
 
