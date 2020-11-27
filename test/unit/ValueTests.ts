@@ -93,6 +93,27 @@ suite('Value', (): void => {
       }).is.throwing((ex: Error): boolean => ex.message === 'Value does not satisfy format: uuid (at value.id).');
     });
 
+    test('supports union types.', async (): Promise<void> => {
+      schema = new Value({
+        type: 'object',
+        properties: {
+          id: {
+            oneOf: [
+              { type: [ 'string', 'number' ]}
+            ]
+          }
+        },
+        required: [ 'id' ],
+        additionalProperties: false
+      });
+
+      assert.that((): void => {
+        schema.validate({
+          id: true
+        });
+      }).is.throwing((ex: Error): boolean => ex.message === 'Invalid type: boolean should be string,number (at value.id).');
+    });
+
     suite('error messages', (): void => {
       test('throws an error if a required property is missing.', async (): Promise<void> => {
         schema = new Value({

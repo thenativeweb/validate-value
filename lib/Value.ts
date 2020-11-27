@@ -4,7 +4,9 @@ import { JSONSchema7 } from 'json-schema';
 import { ValidationError } from './ValidationError';
 import Ajv, { ValidateFunction } from 'ajv';
 
-const ajvInstance = new Ajv();
+const ajvInstance = new Ajv({
+  allowUnionTypes: true
+});
 
 addFormats(ajvInstance);
 ajvInstance.addFormat('alphanumeric', /[a-zA-Z0-9]/u);
