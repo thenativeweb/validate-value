@@ -25,7 +25,7 @@
   "dependencies": {
     "ajv": "7.0.3",
     "ajv-formats": "1.5.1",
-    "json-schema": "0.2.5"
+    "json-schema": "0.3.0"
   },
   "devDependencies": {
     "assertthat": "5.2.5",
