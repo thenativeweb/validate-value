@@ -1,3 +1,10 @@
+## [8.9.13](https://github.com/thenativeweb/validate-value/compare/8.9.12...8.9.13) (2021-01-04)
+
+
+### Bug Fixes
+
+* bump json-schema from 0.2.5 to 0.3.0 ([#260](https://github.com/thenativeweb/validate-value/issues/260)) ([a8784eb](https://github.com/thenativeweb/validate-value/commit/a8784eb96abb03acd728c4a2a6b138c372c6c0c5))
+
 ## [8.9.12](https://github.com/thenativeweb/validate-value/compare/8.9.11...8.9.12) (2021-01-04)
 
 
