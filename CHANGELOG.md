@@ -1,3 +1,10 @@
+## [8.9.14](https://github.com/thenativeweb/validate-value/compare/8.9.13...8.9.14) (2021-01-05)
+
+
+### Bug Fixes
+
+* Error messages for nested properties. ([#265](https://github.com/thenativeweb/validate-value/issues/265)) ([b82bf37](https://github.com/thenativeweb/validate-value/commit/b82bf37ff39fd75455c5312b906f3bbdd7e0391a))
+
 ## [8.9.13](https://github.com/thenativeweb/validate-value/compare/8.9.12...8.9.13) (2021-01-04)
 
 
