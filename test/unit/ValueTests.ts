@@ -170,6 +170,45 @@ suite('Value', (): void => {
         }).is.throwing((ex: Error): boolean => ex.message === 'String is too short (3 chars), minimum 4 (at value.username).');
       });
 
+      test('throws an error if a string undercuts a minimum length and a value name is given.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            metadata: {
+              type: 'object',
+              properties: {
+                client: {
+                  type: 'object',
+                  properties: {
+                    ip: { type: 'string', minLength: 1 }
+                  },
+                  required: [ 'ip' ],
+                  additionalProperties: false
+                }
+              },
+              required: [
+                'client'
+              ],
+              additionalProperties: false
+            }
+          },
+          required: [
+            'metadata'
+          ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            metadata: {
+              client: {
+                ip: ''
+              }
+            }
+          }, { valueName: 'requestBody' });
+        }).is.throwing((ex: Error): boolean => ex.message === 'String is too short (0 chars), minimum 1 (at requestBody.metadata.client.ip).');
+      });
+
       test('throws an error if a string exceeds a maximum length.', async (): Promise<void> => {
         schema = new Value({
           type: 'object',

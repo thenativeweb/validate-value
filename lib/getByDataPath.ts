@@ -1,5 +1,5 @@
 const getByDataPath = function ({ object, dataPath }: { object: any; dataPath: string }): any {
-  const pathSegments = dataPath.replace(/\//u, '.').split('.');
+  const pathSegments = dataPath.replace(/\//ug, '.').split('.');
   const nonEmptyPathSegments = pathSegments.filter((segment): boolean => segment !== '');
 
   let value = object;
