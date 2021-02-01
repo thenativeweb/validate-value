@@ -328,6 +328,32 @@ suite('Value', (): void => {
         }).is.throwing((ex: Error): boolean => ex.message === 'Array is too long (2), maximum 1 (at value.result).');
       });
 
+      test('correctly validates nested array.', async (): Promise<void> => {
+        schema = new Value({
+          type: 'object',
+          properties: {
+            result: {
+              type: 'object',
+              properties: {
+                values: { type: 'array', minItems: 1 }
+              },
+              required: [ 'values' ],
+              additionalProperties: false
+            }
+          },
+          required: [ 'result' ],
+          additionalProperties: false
+        });
+
+        assert.that((): void => {
+          schema.validate({
+            result: {
+              values: []
+            }
+          });
+        }).is.throwing((ex: Error): boolean => ex.message === 'Array is too short (0), minimum 1 (at value.result.values).');
+      });
+
       test('throws an error if a value is of wrong type.', async (): Promise<void> => {
         schema = new Value({
           type: 'object',
