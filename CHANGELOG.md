@@ -1,3 +1,10 @@
+## [8.9.20](https://github.com/thenativeweb/validate-value/compare/8.9.19...8.9.20) (2021-03-25)
+
+
+### Bug Fixes
+
+* Migrate from master to main. ([#312](https://github.com/thenativeweb/validate-value/issues/312)) ([471f1b9](https://github.com/thenativeweb/validate-value/commit/471f1b95f1849db854c70ce90256e6f36ae12223))
+
 ## [8.9.19](https://github.com/thenativeweb/validate-value/compare/8.9.18...8.9.19) (2021-03-22)
 
 
