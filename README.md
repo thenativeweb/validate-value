@@ -9,7 +9,7 @@ validate-value validates values against JSON schemas.
 | Version          | [![npm](https://img.shields.io/npm/v/validate-value)](https://www.npmjs.com/package/validate-value)         |
 | Dependencies     | ![David](https://img.shields.io/david/thenativeweb/validate-value)                                          |
 | Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/validate-value)                                      |
-| Build            | ![GitHub Actions](https://github.com/thenativeweb/validate-value/workflows/Release/badge.svg?branch=master) |
+| Build            | ![GitHub Actions](https://github.com/thenativeweb/validate-value/workflows/Release/badge.svg?branch=main) |
 | License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/validate-value)                                |
 
 ## Installation
@@ -93,7 +93,7 @@ console.log(value.isValid(user));
 To verify that a variable is of a specific type, use the `isOfType` function. Hand over a value you would like to verify, and a JSON schema describing that type. The function returns `true` if the given variable matches the schema, and `false` if it doesn't:
 
 ```javascript
-const { isTypeOf } = require('validate-value'); 
+const { isTypeOf } = require('validate-value');
 
 const user = {
   username: 'Jane Doe',
