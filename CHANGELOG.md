@@ -1,3 +1,10 @@
+## [8.9.22](https://github.com/thenativeweb/validate-value/compare/8.9.21...8.9.22) (2021-03-27)
+
+
+### Bug Fixes
+
+* bump ajv-formats from 1.5.1 to 1.6.0 ([#320](https://github.com/thenativeweb/validate-value/issues/320)) ([c691f79](https://github.com/thenativeweb/validate-value/commit/c691f79b4afb0111b0829df3c6cff3032394ada3))
+
 ## [8.9.21](https://github.com/thenativeweb/validate-value/compare/8.9.20...8.9.21) (2021-03-26)
 
 
