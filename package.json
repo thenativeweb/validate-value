@@ -23,8 +23,8 @@
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "dependencies": {
-    "ajv": "7.2.4",
-    "ajv-formats": "1.6.0",
+    "ajv": "8.1.0",
+    "ajv-formats": "2.0.2",
     "json-schema": "0.3.0"
   },
   "devDependencies": {
