@@ -1,5 +1,5 @@
 import addFormats from 'ajv-formats';
-import { getByDataPath } from './getByDataPath';
+import { getByInstancePath } from './getByInstancePath';
 import { JSONSchema7 } from 'json-schema';
 import { ValidationError } from './ValidationError';
 import Ajv, { ValidateFunction } from 'ajv';
@@ -32,9 +32,9 @@ class Value {
     }
 
     const error = this.validateInternal.errors![0];
-    const failingValue = getByDataPath({ object: value, dataPath: error.dataPath });
+    const failingValue = getByInstancePath({ object: value, instancePath: error.instancePath });
 
-    let updatedPath = `${valueName}${error.dataPath.replace(/\//gu, separator)}`;
+    let updatedPath = `${valueName}${error.instancePath.replace(/\//gu, separator)}`;
     let message = 'Validation failed';
 
     switch (error.keyword) {
