@@ -1,7 +1,7 @@
 import { assert } from 'assertthat';
-import { getByDataPath } from '../../lib/getByDataPath';
+import { getByInstancePath } from '../../lib/getByInstancePath';
 
-suite('getByDataPath', (): void => {
+suite('getByInstancePath', (): void => {
   test('traverses an object by following an ajv data path.', async (): Promise<void> => {
     const object = {
       foo: {
@@ -11,7 +11,7 @@ suite('getByDataPath', (): void => {
       }
     };
 
-    const result = getByDataPath({ object, dataPath: '.foo.bar.baz' });
+    const result = getByInstancePath({ object, instancePath: '.foo.bar.baz' });
 
     assert.that(result).is.equalTo('bam');
   });
@@ -19,7 +19,7 @@ suite('getByDataPath', (): void => {
   test('returns undefined, if the path does not match anything.', async (): Promise<void> => {
     const object = {};
 
-    const result = getByDataPath({ object, dataPath: '.foo.bar.baz' });
+    const result = getByInstancePath({ object, instancePath: '.foo.bar.baz' });
 
     assert.that(result).is.undefined();
   });
@@ -27,7 +27,7 @@ suite('getByDataPath', (): void => {
   test('returns undefined, if the object is undefined.', async (): Promise<void> => {
     const object = undefined;
 
-    const result = getByDataPath({ object, dataPath: '.foo.bar.baz' });
+    const result = getByInstancePath({ object, instancePath: '.foo.bar.baz' });
 
     assert.that(result).is.undefined();
   });

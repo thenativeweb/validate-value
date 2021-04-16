@@ -1,5 +1,5 @@
-const getByDataPath = function ({ object, dataPath }: { object: any; dataPath: string }): any {
-  const pathSegments = dataPath.replace(/\//ug, '.').split('.');
+const getByInstancePath = function ({ object, instancePath }: { object: any; instancePath: string }): any {
+  const pathSegments = instancePath.replace(/\//ug, '.').split('.');
   const nonEmptyPathSegments = pathSegments.filter((segment): boolean => segment !== '');
 
   let value = object;
@@ -15,4 +15,4 @@ const getByDataPath = function ({ object, dataPath }: { object: any; dataPath: s
   return value;
 };
 
-export { getByDataPath };
+export { getByInstancePath };
