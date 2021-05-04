@@ -24,7 +24,7 @@
   "types": "build/lib/index.d.ts",
   "dependencies": {
     "ajv": "8.2.0",
-    "ajv-formats": "2.0.2",
+    "ajv-formats": "2.1.0",
     "json-schema": "0.3.0"
   },
   "devDependencies": {
