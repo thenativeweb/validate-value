@@ -1,3 +1,10 @@
+## [8.9.26](https://github.com/thenativeweb/validate-value/compare/8.9.25...8.9.26) (2021-05-10)
+
+
+### Bug Fixes
+
+* bump hosted-git-info from 2.8.8 to 2.8.9 ([#340](https://github.com/thenativeweb/validate-value/issues/340)) ([bc0c99f](https://github.com/thenativeweb/validate-value/commit/bc0c99f26d808dffda7eddd4c315997ce71018d0))
+
 ## [8.9.25](https://github.com/thenativeweb/validate-value/compare/8.9.24...8.9.25) (2021-05-06)
 
 
