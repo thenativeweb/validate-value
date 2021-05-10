@@ -1,3 +1,10 @@
+## [8.9.27](https://github.com/thenativeweb/validate-value/compare/8.9.26...8.9.27) (2021-05-10)
+
+
+### Bug Fixes
+
+* bump lodash from 4.17.20 to 4.17.21 ([#339](https://github.com/thenativeweb/validate-value/issues/339)) ([74d18ba](https://github.com/thenativeweb/validate-value/commit/74d18ba9fa25b3456639cc7de7f199cce78f614e))
+
 ## [8.9.26](https://github.com/thenativeweb/validate-value/compare/8.9.25...8.9.26) (2021-05-10)
 
 
