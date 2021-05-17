@@ -1,3 +1,18 @@
+# [9.0.0](https://github.com/thenativeweb/validate-value/compare/8.9.29...9.0.0) (2021-05-17)
+
+
+### Features
+
+* Parse, don't validate. ([#345](https://github.com/thenativeweb/validate-value/issues/345)) ([880db64](https://github.com/thenativeweb/validate-value/commit/880db642be3af1fdcdf03c38bbf2c1a3a2a796f1))
+
+
+### BREAKING CHANGES
+
+* Parsing invalid data does not throw an exception anymore; Instead it returns an error-Result object.
+
+- Returns a Result object that either contains a parsed value or an error, instead of just throwing an error. This encourages parsing of data over validating it and provides assistance with TypeScript types of parsed variables.
+- Improves error messages slightly.
+
 ## [8.9.29](https://github.com/thenativeweb/validate-value/compare/8.9.28...8.9.29) (2021-05-17)
 
 
