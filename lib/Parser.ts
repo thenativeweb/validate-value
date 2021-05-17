@@ -1,8 +1,10 @@
 import addFormats from 'ajv-formats';
 import { getByInstancePath } from './getByInstancePath';
 import { JSONSchema7 } from 'json-schema';
-import { ValidationError } from './ValidationError';
+import { ParseError } from './ParseError';
+import { typeOf } from 'typedescriptor';
 import Ajv, { ValidateFunction } from 'ajv';
+import { error, Result, value } from 'defekt';
 
 const ajvInstance = new Ajv({
   allowUnionTypes: true
@@ -11,35 +13,35 @@ const ajvInstance = new Ajv({
 addFormats(ajvInstance);
 ajvInstance.addFormat('alphanumeric', /[a-zA-Z0-9]/u);
 
-class Value {
-  public schema: JSONSchema7;
-
+class Parser<TParsed> {
   protected validateInternal: ValidateFunction;
 
   public constructor (schema: JSONSchema7) {
-    this.schema = schema;
     this.validateInternal = ajvInstance.compile(schema);
   }
 
-  public validate (value: any, { valueName = 'value', separator = '.' }: {
-    valueName?: string;
-    separator?: string;
-  } = {}): void {
-    const isValid = this.validateInternal(value);
+  public parse (
+    unparsedValue: any,
+    { valueName = 'value', separator = '.' }: {
+      valueName?: string;
+      separator?: string;
+    } = {}
+  ): Result<TParsed, ParseError> {
+    const isValid = this.validateInternal(unparsedValue);
 
     if (isValid) {
-      return;
+      return value(unparsedValue);
     }
 
-    const error = this.validateInternal.errors![0];
-    const failingValue = getByInstancePath({ object: value, instancePath: error.instancePath });
+    const validationError = this.validateInternal.errors![0];
+    const failingValue = getByInstancePath({ object: unparsedValue, instancePath: validationError.instancePath });
 
-    let updatedPath = `${valueName}${error.instancePath.replace(/\//gu, separator)}`;
-    let message = 'Validation failed';
+    let updatedPath = `${valueName}${validationError.instancePath.replace(/\//gu, separator)}`;
+    let message = 'Parsing failed';
 
-    switch (error.keyword) {
+    switch (validationError.keyword) {
       case 'required': {
-        const missingPropertyName = error.params.missingProperty;
+        const missingPropertyName = validationError.params.missingProperty;
 
         message = `Missing required property: ${missingPropertyName}`;
         updatedPath += `${separator}${missingPropertyName}`;
@@ -48,7 +50,7 @@ class Value {
       }
 
       case 'additionalProperties': {
-        const additionalPropertyName = error.params.additionalProperty;
+        const additionalPropertyName = validationError.params.additionalProperty;
 
         message = `Unexpected additional property: ${additionalPropertyName}`;
         updatedPath += `${separator}${additionalPropertyName}`;
@@ -57,7 +59,7 @@ class Value {
       }
 
       case 'minLength': {
-        const minPropertyLength = error.params.limit;
+        const minPropertyLength = validationError.params.limit;
         const actualLength = failingValue.length;
 
         message = `String is too short (${actualLength} chars), minimum ${minPropertyLength}`;
@@ -66,7 +68,7 @@ class Value {
       }
 
       case 'maxLength': {
-        const maxPropertyLength = error.params.limit;
+        const maxPropertyLength = validationError.params.limit;
         const actualLength = failingValue.length;
 
         message = `String is too long (${actualLength} chars), maximum ${maxPropertyLength}`;
@@ -75,7 +77,7 @@ class Value {
       }
 
       case 'minimum': {
-        const minimumValue = error.params.limit;
+        const minimumValue = validationError.params.limit;
         const actualValue = failingValue;
 
         message = `Value ${actualValue} is less than minimum ${minimumValue}`;
@@ -84,7 +86,7 @@ class Value {
       }
 
       case 'maximum': {
-        const maximumValue = error.params.limit;
+        const maximumValue = validationError.params.limit;
         const actualValue = failingValue;
 
         message = `Value ${actualValue} is more than maximum ${maximumValue}`;
@@ -93,7 +95,7 @@ class Value {
       }
 
       case 'enum': {
-        const { allowedValues } = error.params;
+        const { allowedValues } = validationError.params;
         const actualValue = failingValue;
 
         message = `No enum match (${actualValue}), expects: ${allowedValues.join(', ')}`;
@@ -102,7 +104,7 @@ class Value {
       }
 
       case 'pattern': {
-        const { pattern } = error.params;
+        const { pattern } = validationError.params;
 
         message = `String does not match pattern: ${pattern}`;
 
@@ -110,7 +112,7 @@ class Value {
       }
 
       case 'minItems': {
-        const { limit } = error.params;
+        const { limit } = validationError.params;
         const actualCount = failingValue.length;
 
         message = `Array is too short (${actualCount}), minimum ${limit}`;
@@ -119,7 +121,7 @@ class Value {
       }
 
       case 'maxItems': {
-        const { limit } = error.params;
+        const { limit } = validationError.params;
         const actualCount = failingValue.length;
 
         message = `Array is too long (${actualCount}), maximum ${limit}`;
@@ -128,17 +130,17 @@ class Value {
       }
 
       case 'format': {
-        const { format } = error.params;
+        const { format } = validationError.params;
 
         message = `Value does not satisfy format: ${format}`;
         break;
       }
 
       case 'type': {
-        const { type } = error.params;
-        const actualType = typeof failingValue;
+        const { type } = validationError.params;
+        const actualType = typeOf(failingValue);
 
-        message = `Invalid type: ${actualType} should be ${type}`;
+        message = `Invalid type: ${actualType} should be ${Array.isArray(type) ? type.join(', ') : type}`;
         break;
       }
 
@@ -147,18 +149,26 @@ class Value {
       }
     }
 
-    throw new ValidationError(`${message} (at ${updatedPath}).`, error);
+    return error(new ParseError({
+      message: `${message} (at ${updatedPath}).`,
+      originalValue: unparsedValue,
+      origin: validationError
+    }));
   }
 
-  public isValid (value: any): boolean {
-    try {
-      this.validate(value);
-    } catch {
-      return false;
+  public isValid (
+    unparsedValue: any
+  ): boolean {
+    const isValid = this.validateInternal(unparsedValue);
+
+    if (isValid) {
+      return true;
     }
 
-    return true;
+    return false;
   }
 }
 
-export { Value };
+export {
+  Parser
+};

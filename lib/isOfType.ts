@@ -1,10 +1,15 @@
 import { JSONSchema7 } from 'json-schema';
-import { Value } from './Value';
+import { Parser } from './Parser';
 
-const isOfType = function <T>(data: unknown, schema: JSONSchema7): data is T {
-  const value = new Value(schema);
+const isOfType = function <T>(
+  data: unknown,
+  schema: JSONSchema7
+): data is T {
+  const parser = new Parser(schema);
 
-  return value.isValid(data);
+  return parser.isValid(data);
 };
 
-export { isOfType };
+export {
+  isOfType
+};
