@@ -18,6 +18,33 @@ validate-value validates values against JSON schemas.
 $ npm install validate-value
 ```
 
+## Philosophy
+
+The rewrite of `validate-value` in version 9.0.0 follows the infamous quote "parse, don't validate"<sup>[1](#footnote-1)</sup>. The quote asserts that parsing data is more valuable than validating it. This is very obvious when comparing the two approaches in TypeScript:
+
+```typescript
+const doThingsWithValidation = async function (options: unknown): Promise<void> {
+    // This throws, if the options are not valid.
+    validateOptions(options);
+
+    const typedOptions = options as Options;
+
+    doSomethingWithAnOption(typedOptions.someOption);
+};
+
+const doThingsWithParsing = async function (options: unknown): Promise<Result<void, Error>> {
+    // This parses the options and unwraps them, throwing if they were invalid.
+    // If invalid options were something our program could handle, we would not
+    // want to throw here and instead handle the error appropriately.
+    // In this example we want the program to crash, if the options are invalid.
+    const typedOptions = parseOptions(options).unwrapOrThrow();
+
+    doSomethingWithAnOption(typedOptions.someOption);
+}
+```
+
+In the second example, the typedOptions contained in the `Result` returned from the `parseOptions` call already have the type that we expect them to have and we don't have to assert them or assign them to a new variable in any way. This combines better support from the TypeScript compiler with better error handling from [`defekt`](https://github.com/thenativeweb/defekt/).
+
 ## Quick start
 
 First you need to integrate validate-value into your application:
@@ -79,6 +106,8 @@ const parsedValue = result.unwrapOrThrow();
 
 After parsing, `parsedValue` will have the type `User`, since it was passed to the Parser upon construction.
 
+## Configuring the parser
+
 By default, the error message uses `value` as identifier and `.` as the separator for the object that is parsed, but sometimes you may want to change this. Therefor, provide the desired identifier and separator as second parameter to the `parse` function:
 
 ```javascript
@@ -89,6 +118,8 @@ const user = {
 
 value.parse(user, { valueName: 'person', separator: '/' });
 ```
+
+## Parsing without a parser instance
 
 For convenience, there is also the `parse` function, which skips the creation of a parser instance. You can use this if you're only going to use a schema for validation once. Otherwise, it is recommended to first create a parser instance, since then the json schema is only compiled once.
 
@@ -162,6 +193,10 @@ if (isOfType<User>(user, schema)) {
   // ...
 }
 ```
+
+## Resources
+
+<a name="footnote-1">1:</a> ["Parse, don't validate", Alexis King, 2019](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/).
 
 ## Running quality assurance
 
