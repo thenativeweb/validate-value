@@ -1,5 +1,7 @@
 import { isOfType } from './isOfType';
-import { Value } from './Value';
-import { values } from './values';
+import { JSONSchema7 as JsonSchema } from 'json-schema';
+import { parse } from './parse';
+import { Parser } from './Parser';
 
-export { isOfType, Value, values };
+export type { JsonSchema };
+export { isOfType, parse, Parser };
