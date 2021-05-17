@@ -24,26 +24,26 @@ The rewrite of `validate-value` in version 9.0.0 follows the infamous quote "par
 
 ```typescript
 const doThingsWithValidation = async function (options: unknown): Promise<void> {
-    // This throws, if the options are not valid.
-    validateOptions(options);
+  // This throws, if the options are not valid.
+  validateOptions(options);
 
-    const typedOptions = options as Options;
+  const typedOptions = options as Options;
 
-    doSomethingWithAnOption(typedOptions.someOption);
+  doSomethingWithAnOption(typedOptions.someOption);
 };
 
 const doThingsWithParsing = async function (options: unknown): Promise<Result<void, Error>> {
-    // This parses the options and unwraps them, throwing if they were invalid.
-    // If invalid options were something our program could handle, we would not
-    // want to throw here and instead handle the error appropriately.
-    // In this example we want the program to crash, if the options are invalid.
-    const typedOptions = parseOptions(options).unwrapOrThrow();
+  // This parses the options and unwraps them, throwing if they were invalid.
+  // If invalid options were something our program could handle, we would not
+  // want to throw here and instead handle the error appropriately.
+  // In this example we want the function to throw, if the options are invalid.
+  const typedOptions = parseOptions(options).unwrapOrThrow();
 
-    doSomethingWithAnOption(typedOptions.someOption);
-}
+  doSomethingWithAnOption(typedOptions.someOption);
+};
 ```
 
-In the second example, the typedOptions contained in the `Result` returned from the `parseOptions` call already have the type that we expect them to have and we don't have to assert them or assign them to a new variable in any way. This combines better support from the TypeScript compiler with better error handling from [`defekt`](https://github.com/thenativeweb/defekt/).
+In the second example, the `typedOptions` contained in the `Result` returned from the `parseOptions` call already have the type that we expect them to have and we don't have to assert them or assign them to a new variable in any way. This combines better support from the TypeScript compiler with better error handling from [`defekt`](https://github.com/thenativeweb/defekt/).
 
 ## Quick start
 
@@ -73,7 +73,7 @@ const parser = new Parser({
 });
 ```
 
-If you are using typescript, you will want to provide a type for the parsed value:
+If you are using TypeScript, you will want to provide a type for the parsed value:
 
 ```typescript
 interface User {
@@ -104,7 +104,7 @@ const result = parser.parse(user);
 const parsedValue = result.unwrapOrThrow();
 ```
 
-After parsing, `parsedValue` will have the type `User`, since it was passed to the Parser upon construction.
+After parsing, `parsedValue` will have the type `User`, since it was passed to the parser upon construction.
 
 ## Configuring the parser
 
@@ -121,7 +121,7 @@ value.parse(user, { valueName: 'person', separator: '/' });
 
 ## Parsing without a parser instance
 
-For convenience, there is also the `parse` function, which skips the creation of a parser instance. You can use this if you're only going to use a schema for validation once. Otherwise, it is recommended to first create a parser instance, since then the json schema is only compiled once.
+For convenience, there is also the `parse` function, which skips the creation of a parser instance. You can use this if you're only going to use a schema for validation once. Otherwise, it is recommended to first create a parser instance, since then the JSON schema is only compiled once:
 
 ```javascript
 const { parse } = require('validate-value');
@@ -134,12 +134,12 @@ parse(user, {
   },
   additionalProperties: false,
   required: [ 'username', 'password' ]
-})
+});
 ```
 
 ### Verifying that a variable is of a specific type
 
-To verify that a variable is of a specific type, use the `isOfType` function. Hand over a value you would like to verify, and a JSON schema describing that type. The function returns `true` if the given variable matches the schema, and `false` if it doesn't:
+To verify that a variable is of a specific type, use the `isOfType` function. Hand over the value you would like to verify, and a JSON schema describing that type. The function returns `true` if the given variable matches the schema, and `false` if it doesn't:
 
 ```javascript
 const { isOfType } = require('validate-value');
@@ -164,7 +164,7 @@ if (isOfType(user, schema)) {
 }
 ```
 
-When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard.
+When using TypeScript, you may even specify a generic type parameter, and use the function as a type guard:
 
 ```typescript
 import { isOfType, JsonSchema } from 'validate-value';
