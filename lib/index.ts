@@ -4,5 +4,5 @@ import { parse } from './parse';
 import { ParseError } from './ParseError';
 import { Parser } from './Parser';
 
-export type { JsonSchema, ParseError };
-export { isOfType, parse, Parser };
+export type { JsonSchema };
+export { isOfType, parse, ParseError, Parser };
