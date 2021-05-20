@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/thenativeweb/validate-value/compare/9.0.0...9.0.1) (2021-05-20)
+
+
+### Bug Fixes
+
+* Export ParseError. ([#346](https://github.com/thenativeweb/validate-value/issues/346)) ([4f96236](https://github.com/thenativeweb/validate-value/commit/4f9623621e11b65fbde7779439558dde4ff3a565))
+
 # [9.0.0](https://github.com/thenativeweb/validate-value/compare/8.9.29...9.0.0) (2021-05-17)
 
 
