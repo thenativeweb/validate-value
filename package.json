@@ -1,6 +1,6 @@
 {
   "name": "validate-value",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "validate-value validates values against JSON schemas.",
   "contributors": [
     {
@@ -23,7 +23,7 @@
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "dependencies": {
-    "ajv": "8.4.0",
+    "ajv": "8.5.0",
     "ajv-formats": "2.1.0",
     "defekt": "7.1.2",
     "json-schema": "0.3.0",
