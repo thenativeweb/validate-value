@@ -1,3 +1,10 @@
+## [9.0.7](https://github.com/thenativeweb/validate-value/compare/9.0.6...9.0.7) (2021-06-10)
+
+
+### Bug Fixes
+
+* bump trim-newlines from 3.0.0 to 3.0.1 ([#358](https://github.com/thenativeweb/validate-value/issues/358)) ([9ce36c5](https://github.com/thenativeweb/validate-value/commit/9ce36c5045d972e4d355f325c72a7227bab15230))
+
 ## [9.0.6](https://github.com/thenativeweb/validate-value/compare/9.0.5...9.0.6) (2021-06-07)
 
 
