@@ -1,3 +1,10 @@
+## [9.0.8](https://github.com/thenativeweb/validate-value/compare/9.0.7...9.0.8) (2021-06-10)
+
+
+### Bug Fixes
+
+* bump normalize-url from 6.0.0 to 6.0.1 ([#357](https://github.com/thenativeweb/validate-value/issues/357)) ([71ca5d3](https://github.com/thenativeweb/validate-value/commit/71ca5d344504142bbcb0d6566095160f2dd6c8ca))
+
 ## [9.0.7](https://github.com/thenativeweb/validate-value/compare/9.0.6...9.0.7) (2021-06-10)
 
 
