@@ -1,3 +1,10 @@
+## [9.0.9](https://github.com/thenativeweb/validate-value/compare/9.0.8...9.0.9) (2021-06-14)
+
+
+### Bug Fixes
+
+* bump defekt from 7.2.0 to 7.2.3 ([#363](https://github.com/thenativeweb/validate-value/issues/363)) ([d837770](https://github.com/thenativeweb/validate-value/commit/d837770f70eaa0ee0e23b0ee32309ff257663fe0))
+
 ## [9.0.8](https://github.com/thenativeweb/validate-value/compare/9.0.7...9.0.8) (2021-06-10)
 
 
