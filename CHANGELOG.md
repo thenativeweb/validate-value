@@ -1,3 +1,10 @@
+## [9.0.12](https://github.com/thenativeweb/validate-value/compare/9.0.11...9.0.12) (2021-07-06)
+
+
+### Bug Fixes
+
+* bump ajv from 8.6.0 to 8.6.1 ([#369](https://github.com/thenativeweb/validate-value/issues/369)) ([64e79e4](https://github.com/thenativeweb/validate-value/commit/64e79e4dc05e7f1c09c849bf135cb087aee6b1c6))
+
 ## [9.0.11](https://github.com/thenativeweb/validate-value/compare/9.0.10...9.0.11) (2021-06-29)
 
 
