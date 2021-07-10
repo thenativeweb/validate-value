@@ -1,3 +1,10 @@
+# [9.1.0](https://github.com/thenativeweb/validate-value/compare/9.0.12...9.1.0) (2021-07-10)
+
+
+### Features
+
+* Bump multiple dependencies. ([#370](https://github.com/thenativeweb/validate-value/issues/370)) ([ac94554](https://github.com/thenativeweb/validate-value/commit/ac94554442eff44506c3ec8f03596c9e00aef4dd))
+
 ## [9.0.12](https://github.com/thenativeweb/validate-value/compare/9.0.11...9.0.12) (2021-07-06)
 
 
