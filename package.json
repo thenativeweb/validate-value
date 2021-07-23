@@ -25,13 +25,13 @@
   "dependencies": {
     "ajv": "8.6.2",
     "ajv-formats": "2.1.0",
-    "defekt": "7.3.0",
+    "defekt": "7.3.2",
     "json-schema": "0.3.0",
     "typedescriptor": "4.0.10"
   },
   "devDependencies": {
-    "assertthat": "6.3.7",
-    "roboter": "11.7.7",
+    "assertthat": "6.3.9",
+    "roboter": "11.7.8",
     "semantic-release-configuration": "2.0.5"
   },
   "repository": {
