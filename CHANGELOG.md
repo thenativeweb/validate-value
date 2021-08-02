@@ -1,3 +1,10 @@
+## [9.1.4](https://github.com/thenativeweb/validate-value/compare/9.1.3...9.1.4) (2021-08-02)
+
+
+### Bug Fixes
+
+* bump typedescriptor from 4.0.10 to 4.0.11 ([#377](https://github.com/thenativeweb/validate-value/issues/377)) ([5585327](https://github.com/thenativeweb/validate-value/commit/558532798234430bb3873d5a9ad92ff423ac2719))
+
 ## [9.1.3](https://github.com/thenativeweb/validate-value/compare/9.1.2...9.1.3) (2021-07-23)
 
 
