@@ -30,7 +30,7 @@
     "typedescriptor": "4.0.11"
   },
   "devDependencies": {
-    "assertthat": "6.3.10",
+    "assertthat": "6.3.11",
     "roboter": "11.7.8",
     "semantic-release-configuration": "2.0.5"
   },
