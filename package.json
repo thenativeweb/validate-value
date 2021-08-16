@@ -27,7 +27,7 @@
     "ajv-formats": "2.1.1",
     "defekt": "7.3.2",
     "json-schema": "0.3.0",
-    "typedescriptor": "4.0.11"
+    "typedescriptor": "4.0.12"
   },
   "devDependencies": {
     "assertthat": "6.3.13",
