@@ -20,12 +20,13 @@
       "email": "alexander.kampf@thenativeweb.io"
     }
   ],
+  "private": false,
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "dependencies": {
     "ajv": "8.6.2",
     "ajv-formats": "2.1.1",
-    "defekt": "7.3.2",
+    "defekt": "7.3.3",
     "json-schema": "0.3.0",
     "typedescriptor": "4.0.12"
   },
@@ -34,6 +35,7 @@
     "roboter": "12.1.2",
     "semantic-release-configuration": "2.0.5"
   },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/thenativeweb/validate-value.git"
