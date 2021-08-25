@@ -69,6 +69,7 @@ class Parser<TParsed> {
 
       case 'maxLength': {
         const maxPropertyLength = validationError.params.limit;
+        // eslint-disable-next-line no-redeclare
         const actualLength = failingValue.length;
 
         message = `String is too long (${actualLength} chars), maximum ${maxPropertyLength}`;
@@ -87,6 +88,7 @@ class Parser<TParsed> {
 
       case 'maximum': {
         const maximumValue = validationError.params.limit;
+        // eslint-disable-next-line no-redeclare
         const actualValue = failingValue;
 
         message = `Value ${actualValue} is more than maximum ${maximumValue}`;
@@ -96,6 +98,7 @@ class Parser<TParsed> {
 
       case 'enum': {
         const { allowedValues } = validationError.params;
+        // eslint-disable-next-line no-redeclare
         const actualValue = failingValue;
 
         message = `No enum match (${actualValue}), expects: ${allowedValues.join(', ')}`;
@@ -121,7 +124,9 @@ class Parser<TParsed> {
       }
 
       case 'maxItems': {
+        // eslint-disable-next-line no-redeclare
         const { limit } = validationError.params;
+        // eslint-disable-next-line no-redeclare
         const actualCount = failingValue.length;
 
         message = `Array is too long (${actualCount}), maximum ${limit}`;
