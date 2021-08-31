@@ -30,7 +30,7 @@ class Parser<TParsed> {
     const isValid = this.validateInternal(unparsedValue);
 
     if (isValid) {
-      return value(unparsedValue);
+      return value(unparsedValue as TParsed);
     }
 
     const validationError = this.validateInternal.errors![0];
