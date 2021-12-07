@@ -50,13 +50,13 @@ In the second example, the `typedOptions` contained in the `Result` returned fro
 First you need to integrate validate-value into your application:
 
 ```javascript
-const { isValid, parse, Parser } = require('validate-value');
+const { parse, Parser } = require('validate-value');
 ```
 
 If you use TypeScript, use the following code instead:
 
 ```typescript
-import { isValid, parse, Parser } from 'validate-value';
+import { parse, Parser } from 'validate-value';
 ```
 
 Then, create a new instance and provide a [JSON schema](https://json-schema.org/learn/getting-started-step-by-step.html) that you would like to use for parsing:
