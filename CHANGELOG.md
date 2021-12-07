@@ -1,3 +1,10 @@
+## [9.1.7](https://github.com/thenativeweb/validate-value/compare/9.1.6...9.1.7) (2021-12-07)
+
+
+### Bug Fixes
+
+* Remove non-existent function from documenation. ([#402](https://github.com/thenativeweb/validate-value/issues/402)) ([4bfb4e3](https://github.com/thenativeweb/validate-value/commit/4bfb4e3a4f6a623180645f9f8c56c82c46988052))
+
 ## [9.1.6](https://github.com/thenativeweb/validate-value/compare/9.1.5...9.1.6) (2021-08-16)
 
 
