@@ -1,3 +1,10 @@
+# [9.2.0](https://github.com/thenativeweb/validate-value/compare/9.1.7...9.2.0) (2022-01-17)
+
+
+### Features
+
+* Improve readme. ([#405](https://github.com/thenativeweb/validate-value/issues/405)) ([98687b8](https://github.com/thenativeweb/validate-value/commit/98687b82c7b8210e8e8255dc2b170b7b306cf469))
+
 ## [9.1.7](https://github.com/thenativeweb/validate-value/compare/9.1.6...9.1.7) (2021-12-07)
 
 
