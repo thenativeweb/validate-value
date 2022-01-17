@@ -94,39 +94,47 @@ const parser = new Parser<User>({
 
 Afterwards, you may use the `parse` function to parse a value:
 
-```javascript
+```typescript
 const user = {
   username: 'Jane Doe',
   password: 'secret'
 };
 
-const result = parser.parse(user);
-const parsedValue = result.unwrapOrThrow();
+const parseResult = parser.parse(user);
+
+if (parseResult.hasError()) {
+    // The user object did not match the parser's schema. This should be handled.
+} else {
+    // The user object was parsed successfully and the result's value can now be used.
+    doSomethingWithUser(parseResult.value);
+}
 ```
 
-After parsing, `parsedValue` will have the type `User`, since it was passed to the parser upon construction.
+After parsing, the value in the returned `Result` will have the type `User`, since it was passed to the parser upon construction.
+
+For details on the error handling in the example above, check the [documentation of the `Result` type in `defekt`](https://github.com/thenativeweb/defekt#using-result).
 
 ## Configuring the parser
 
 By default, the error message uses `value` as identifier and `.` as the separator for the object that is parsed, but sometimes you may want to change this. Therefor, provide the desired identifier and separator as second parameter to the `parse` function:
 
-```javascript
+```typescript
 const user = {
   username: 'Jane Doe',
   password: 'secret'
 };
 
-value.parse(user, { valueName: 'person', separator: '/' });
+const parseResult = parser.parse(user, { valueName: 'person', separator: '/' });
 ```
 
 ## Parsing without a parser instance
 
 For convenience, there is also the `parse` function, which skips the creation of a parser instance. You can use this if you're only going to use a schema for validation once. Otherwise, it is recommended to first create a parser instance, since then the JSON schema is only compiled once:
 
-```javascript
-const { parse } = require('validate-value');
+```typescript
+import { parse } from 'validate-value';
 
-parse(user, {
+const parseResult = parse<User>(user, {
   type: 'object',
   properties: {
     username: { type: 'string' },
