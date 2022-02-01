@@ -1,3 +1,10 @@
+## [9.2.1](https://github.com/thenativeweb/validate-value/compare/9.2.0...9.2.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* Update dependencies assertthat and defekt. ([#414](https://github.com/thenativeweb/validate-value/issues/414)) ([bada9ec](https://github.com/thenativeweb/validate-value/commit/bada9ec9fe454fbe1431829245f6b19bfb4fb539))
+
 # [9.2.0](https://github.com/thenativeweb/validate-value/compare/9.1.7...9.2.0) (2022-01-17)
 
 
