@@ -24,6 +24,7 @@
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "dependencies": {
+    "@types/json-schema": "7.0.9",
     "ajv": "8.9.0",
     "ajv-formats": "2.1.1",
     "defekt": "8.1.0",
