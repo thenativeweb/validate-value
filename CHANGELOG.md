@@ -1,3 +1,10 @@
+## [9.2.2](https://github.com/thenativeweb/validate-value/compare/9.2.1...9.2.2) (2022-02-03)
+
+
+### Bug Fixes
+
+* Add missing dependency @types/json-schema. ([#415](https://github.com/thenativeweb/validate-value/issues/415)) ([04e4c22](https://github.com/thenativeweb/validate-value/commit/04e4c220bff8bebf1d53065dc098a54f774577d8))
+
 ## [9.2.1](https://github.com/thenativeweb/validate-value/compare/9.2.0...9.2.1) (2022-02-01)
 
 
