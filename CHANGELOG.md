@@ -1,3 +1,10 @@
+# [9.3.0](https://github.com/thenativeweb/validate-value/compare/9.2.2...9.3.0) (2022-03-21)
+
+
+### Features
+
+* Support custom Ajv instances ([#419](https://github.com/thenativeweb/validate-value/issues/419)) ([e4b602e](https://github.com/thenativeweb/validate-value/commit/e4b602e36fe1c071717857206dc98397657c003b))
+
 ## [9.2.2](https://github.com/thenativeweb/validate-value/compare/9.2.1...9.2.2) (2022-02-03)
 
 
