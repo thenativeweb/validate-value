@@ -7,9 +7,7 @@ validate-value validates values against JSON schemas.
 | Category         | Status                                                                                                      |
 | ---------------- | ----------------------------------------------------------------------------------------------------------- |
 | Version          | [![npm](https://img.shields.io/npm/v/validate-value)](https://www.npmjs.com/package/validate-value)         |
-| Dependencies     | ![David](https://img.shields.io/david/thenativeweb/validate-value)                                          |
-| Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/validate-value)                                      |
-| Build            | ![GitHub Actions](https://github.com/thenativeweb/validate-value/workflows/Release/badge.svg?branch=main) |
+| Build            | ![GitHub Actions](https://github.com/thenativeweb/validate-value/workflows/Release/badge.svg?branch=main)   |
 | License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/validate-value)                                |
 
 ## Installation
@@ -114,9 +112,13 @@ After parsing, the value in the returned `Result` will have the type `User`, sin
 
 For details on the error handling in the example above, check the [documentation of the `Result` type in `defekt`](https://github.com/thenativeweb/defekt#using-result).
 
-## Configuring the parser
+### Configuring the parser
 
-By default, the error message uses `value` as identifier and `.` as the separator for the object that is parsed, but sometimes you may want to change this. Therefor, provide the desired identifier and separator as second parameter to the `parse` function:
+If you want to, you can configure the parser according to your needs.
+
+#### Configuring the error messages
+
+By default, the error message uses `value` as identifier and `.` as the separator for the object that is parsed, but sometimes you may want to change this. Therefore, provide the desired identifier and separator as second parameter to the `parse` function:
 
 ```typescript
 const user = {
@@ -127,7 +129,35 @@ const user = {
 const parseResult = parser.parse(user, { valueName: 'person', separator: '/' });
 ```
 
-## Parsing without a parser instance
+#### Using a custom validator
+
+Sometimes it is desired to use a custom validator instance, e.g. if you want to add custom formats. For that, you can hand over a custom [Ajv](https://ajv.js.org/) instance to the parser:
+
+```typescript
+const schema = // ...
+const ajvInstance = new Ajv();
+
+// Adjust Ajv instance according to your needs...
+
+const parser = new Parser<User>(schema, {
+  ajvInstance
+});
+```
+
+Optionally, you can build upon the default instance that is used internally. For that, call the `getDefaultAjvInstance` function:
+
+```typescript
+const schema = // ...
+const ajvInstance = getDefaultAjvInstance();
+
+// Adjust Ajv instance according to your needs...
+
+const parser = new Parser<User>(schema, {
+  ajvInstance
+});
+```
+
+### Parsing without a parser instance
 
 For convenience, there is also the `parse` function, which skips the creation of a parser instance. You can use this if you're only going to use a schema for validation once. Otherwise, it is recommended to first create a parser instance, since then the JSON schema is only compiled once:
 
@@ -145,7 +175,7 @@ const parseResult = parse<User>(user, {
 });
 ```
 
-### Verifying that a variable is of a specific type
+#### Verifying that a variable is of a specific type
 
 To verify that a variable is of a specific type, use the `isOfType` function. Hand over the value you would like to verify, and a JSON schema describing that type. The function returns `true` if the given variable matches the schema, and `false` if it doesn't:
 

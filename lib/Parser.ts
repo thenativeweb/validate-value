@@ -1,22 +1,23 @@
-import addFormats from 'ajv-formats';
 import { getByInstancePath } from './getByInstancePath';
+import { getDefaultAjvInstance } from './getDefaultAjvInstance';
 import { JSONSchema7 } from 'json-schema';
 import { ParseError } from './ParseError';
 import { typeOf } from 'typedescriptor';
 import Ajv, { ValidateFunction } from 'ajv';
 import { error, Result, value } from 'defekt';
 
-const ajvInstance = new Ajv({
-  allowUnionTypes: true
-});
+interface ParserOptions {
+  ajvInstance: Ajv;
+}
 
-addFormats(ajvInstance);
-ajvInstance.addFormat('alphanumeric', /[a-zA-Z0-9]/u);
+const defaultParserOptions: ParserOptions = {
+  ajvInstance: getDefaultAjvInstance()
+};
 
 class Parser<TParsed> {
   protected validateInternal: ValidateFunction;
 
-  public constructor (schema: JSONSchema7) {
+  public constructor (schema: JSONSchema7, { ajvInstance }: ParserOptions = defaultParserOptions) {
     this.validateInternal = ajvInstance.compile(schema);
   }
 
