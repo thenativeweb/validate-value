@@ -101,10 +101,10 @@ const user = {
 const parseResult = parser.parse(user);
 
 if (parseResult.hasError()) {
-    // The user object did not match the parser's schema. This should be handled.
+  // The user object did not match the parser's schema. This should be handled.
 } else {
-    // The user object was parsed successfully and the result's value can now be used.
-    doSomethingWithUser(parseResult.value);
+  // The user object was parsed successfully and the result's value can now be used.
+  doSomethingWithUser(parseResult.value);
 }
 ```
 
