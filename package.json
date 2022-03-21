@@ -18,13 +18,17 @@
     {
       "name": "Alexander Kampf",
       "email": "alexander.kampf@thenativeweb.io"
+    },
+    {
+      "name": "Matthias Hermsen",
+      "email": "matthiashermsen@gmail.com"
     }
   ],
   "private": false,
   "main": "build/lib/index.js",
   "types": "build/lib/index.d.ts",
   "dependencies": {
-    "@types/json-schema": "7.0.9",
+    "@types/json-schema": "7.0.10",
     "ajv": "8.10.0",
     "ajv-formats": "2.1.1",
     "defekt": "8.2.0",
@@ -33,7 +37,7 @@
   },
   "devDependencies": {
     "assertthat": "6.4.0",
-    "roboter": "12.7.0",
+    "roboter": "12.7.1",
     "semantic-release-configuration": "2.0.7"
   },
   "scripts": {},

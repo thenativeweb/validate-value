@@ -1,7 +1,9 @@
 import { assert } from 'assertthat';
 import { boolean } from '../shared/schemas/boolean';
 import { formats } from '../shared/schemas/formats';
+import { getDefaultAjvInstance } from '../../lib/getDefaultAjvInstance';
 import { invalid } from '../shared/schemas/invalid';
+import { JsonSchema } from '../../lib';
 import { Parser } from '../../lib/Parser';
 import { user } from '../shared/schemas/user';
 import { value } from 'defekt';
@@ -12,25 +14,45 @@ interface User {
 }
 
 suite('Parser', (): void => {
-  suite('validate', (): void => {
+  test('throws an error if the given schema is invalid.', async (): Promise<void> => {
+    assert.that((): void => {
+      // eslint-disable-next-line no-new
+      new Parser(invalid);
+    }).is.throwing('unknown format "invalid-format" ignored in schema at path "#"');
+  });
+
+  test('does not throw an error on advanced formats.', async (): Promise<void> => {
+    assert.that((): void => {
+      // eslint-disable-next-line no-new
+      new Parser(formats);
+    }).is.not.throwing();
+  });
+
+  test('supports custom Ajv instances.', async (): Promise<void> => {
+    const customAjvInstance = getDefaultAjvInstance();
+
+    customAjvInstance.addFormat('made-up', {
+      type: 'string',
+      validate (currentValue: string): boolean {
+        return currentValue === 'made-up';
+      }
+    });
+
+    const schema: JsonSchema = {
+      type: 'string',
+      format: 'made-up'
+    };
+
+    const parser = new Parser(schema, { ajvInstance: customAjvInstance });
+
+    assert.that(parser.isValid('non-made-up-value')).is.false();
+  });
+
+  suite('parse', (): void => {
     let parser: Parser<User>;
 
     setup(async (): Promise<void> => {
       parser = new Parser(user);
-    });
-
-    test('throws an error if the given schema is invalid.', async (): Promise<void> => {
-      assert.that((): void => {
-        // eslint-disable-next-line no-new
-        new Parser(invalid);
-      }).is.throwing('unknown format "invalid-format" ignored in schema at path "#"');
-    });
-
-    test('does not throw an error on advanced formats.', async (): Promise<void> => {
-      assert.that((): void => {
-        // eslint-disable-next-line no-new
-        new Parser(formats);
-      }).is.not.throwing();
     });
 
     test('does not throw an error if value is a falsy value.', async (): Promise<void> => {
