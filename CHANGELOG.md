@@ -1,3 +1,10 @@
+## [9.3.1](https://github.com/thenativeweb/validate-value/compare/9.3.0...9.3.1) (2022-03-24)
+
+
+### Bug Fixes
+
+* Update dependencies. ([#421](https://github.com/thenativeweb/validate-value/issues/421)) ([a995239](https://github.com/thenativeweb/validate-value/commit/a9952393155831b7620bc9b588f31e68e7affe3a))
+
 # [9.3.0](https://github.com/thenativeweb/validate-value/compare/9.2.2...9.3.0) (2022-03-21)
 
 
