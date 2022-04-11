@@ -1,3 +1,10 @@
+## [9.3.3](https://github.com/thenativeweb/validate-value/compare/9.3.2...9.3.3) (2022-04-11)
+
+
+### Bug Fixes
+
+* bump minimist from 1.2.5 to 1.2.6 ([#422](https://github.com/thenativeweb/validate-value/issues/422)) ([499c308](https://github.com/thenativeweb/validate-value/commit/499c3086b9a48dbdbf2b09a0c400902a8729de7c))
+
 ## [9.3.2](https://github.com/thenativeweb/validate-value/compare/9.3.1...9.3.2) (2022-03-24)
 
 
