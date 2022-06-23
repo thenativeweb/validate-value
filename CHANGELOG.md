@@ -1,3 +1,10 @@
+# [9.4.0](https://github.com/thenativeweb/validate-value/compare/9.3.3...9.4.0) (2022-06-23)
+
+
+### Features
+
+* export type 'Format' ([#432](https://github.com/thenativeweb/validate-value/issues/432)) ([16ec76b](https://github.com/thenativeweb/validate-value/commit/16ec76b78d0b8d5da019fbdffcd0a137a3293708))
+
 ## [9.3.3](https://github.com/thenativeweb/validate-value/compare/9.3.2...9.3.3) (2022-04-11)
 
 
