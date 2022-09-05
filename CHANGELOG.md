@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/thenativeweb/validate-value/compare/9.4.0...10.0.0) (2022-09-05)
+
+
+### Features
+
+* Update to JsonSchema draft-2020-12. ([#437](https://github.com/thenativeweb/validate-value/issues/437)) ([34cf4a2](https://github.com/thenativeweb/validate-value/commit/34cf4a2da481b0baa19fe11cf91a50e69fada01e))
+
+
+### BREAKING CHANGES
+
+* `validate-value` now uses JSONSchema draft-2020-12. You need to update your schemata to this draft, as schemata written for older versions might not be compatible anymore, and could behave unexpectedly. You can find the migration guide at https://ajv.js.org/json-schema.html#draft-2020-12.
+
 # [9.4.0](https://github.com/thenativeweb/validate-value/compare/9.3.3...9.4.0) (2022-06-23)
 
 
