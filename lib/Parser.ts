@@ -1,9 +1,10 @@
+import Ajv from 'ajv/dist/2020';
 import { getByInstancePath } from './getByInstancePath';
 import { getDefaultAjvInstance } from './getDefaultAjvInstance';
 import { JSONSchema7 } from 'json-schema';
 import { ParseError } from './ParseError';
 import { typeOf } from 'typedescriptor';
-import Ajv, { ValidateFunction } from 'ajv';
+import { ValidateFunction } from 'ajv';
 import { error, Result, value } from 'defekt';
 
 interface ParserOptions {
